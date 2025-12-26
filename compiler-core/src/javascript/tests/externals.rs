@@ -2,7 +2,7 @@ use crate::{assert_js, assert_module_error, assert_ts_def};
 
 #[test]
 fn type_() {
-    assert_js!(r#"pub type Thing"#,);
+    assert_js!(r#"public type Thing"#,);
 }
 
 #[test]
@@ -89,7 +89,7 @@ pub fn class() -> Nil
 #[test]
 fn external_type_typescript() {
     assert_ts_def!(
-        r#"pub type Queue(a)
+        r#"public type Queue(a)
 
 @external(javascript, "queue", "new")
 pub fn new() -> Queue(a)

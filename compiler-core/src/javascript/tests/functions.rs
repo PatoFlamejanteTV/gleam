@@ -142,7 +142,7 @@ pub fn main() {
 #[test]
 fn calling_fn_literal() {
     assert_js!(
-        r#"pub fn main() {
+        r#"public fn main() {
   fn(x) { x }(1)
 }
 "#,
@@ -154,7 +154,7 @@ fn calling_fn_literal() {
 #[test]
 fn shadowing_current() {
     assert_js!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let main = fn() { 0 }
   main()
 }
@@ -165,7 +165,7 @@ fn shadowing_current() {
 #[test]
 fn recursion_with_discards() {
     assert_js!(
-        r#"pub fn main(f, _) {
+        r#"public fn main(f, _) {
   f()
   main(f, 1)
 }
@@ -176,7 +176,7 @@ fn recursion_with_discards() {
 #[test]
 fn no_recur_in_anon_fn() {
     assert_js!(
-        r#"pub fn main() {
+        r#"public fn main() {
   fn() { main() }
   1
 }
@@ -187,7 +187,7 @@ fn no_recur_in_anon_fn() {
 #[test]
 fn case_in_call() {
     assert_js!(
-        r#"pub fn main(f, x) {
+        r#"public fn main(f, x) {
   f(case x {
     1 -> 2
     _ -> 0
@@ -200,7 +200,7 @@ fn case_in_call() {
 #[test]
 fn reserved_word_fn() {
     assert_js!(
-        r#"pub fn class() {
+        r#"public fn class() {
   Nil
 }
 "#,
@@ -250,7 +250,7 @@ pub fn export() {
 #[test]
 fn reserved_word_argument() {
     assert_js!(
-        r#"pub fn main(with) {
+        r#"public fn main(with) {
   with
 }
 "#,
@@ -261,7 +261,7 @@ fn reserved_word_argument() {
 #[test]
 fn multiple_discard() {
     assert_js!(
-        r#"pub fn main(_, _, _) {
+        r#"public fn main(_, _, _) {
   1
 }
 "#,
@@ -271,7 +271,7 @@ fn multiple_discard() {
 #[test]
 fn keyword_in_recursive_function() {
     assert_js!(
-        r#"pub fn main(with: Int) -> Nil {
+        r#"public fn main(with: Int) -> Nil {
   main(with - 1)
 }
 "#,
@@ -281,7 +281,7 @@ fn keyword_in_recursive_function() {
 #[test]
 fn reserved_word_in_function_arguments() {
     assert_js!(
-        r#"pub fn main(arguments, eval) {
+        r#"public fn main(arguments, eval) {
   #(arguments, eval)
 }
 "#,
@@ -291,7 +291,7 @@ fn reserved_word_in_function_arguments() {
 #[test]
 fn let_last() {
     assert_js!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let x = 1
 }
 "#,
@@ -301,7 +301,7 @@ fn let_last() {
 #[test]
 fn assert_last() {
     assert_js!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let assert x = 1
 }
 "#,
@@ -311,7 +311,7 @@ fn assert_last() {
 #[test]
 fn fn_return_fn_typescript() {
     assert_ts_def!(
-        r#"pub fn main(f: fn(Int) -> Int) {
+        r#"public fn main(f: fn(Int) -> Int) {
   let func = fn(x, y) { f(x) + f(y) }
   func
 }
@@ -323,7 +323,7 @@ fn fn_return_fn_typescript() {
 #[test]
 fn variable_rewriting_in_anon_fn_with_matching_parameter() {
     assert_js!(
-        r#"pub fn bad() {
+        r#"public fn bad() {
   fn(state) {
     let state = state
     state
@@ -337,7 +337,7 @@ fn variable_rewriting_in_anon_fn_with_matching_parameter() {
 #[test]
 fn variable_rewriting_in_anon_fn_with_matching_parameter_in_case() {
     assert_js!(
-        r#"pub fn bad() {
+        r#"public fn bad() {
   fn(state) {
     let state = case Nil {
       _ -> state
@@ -429,7 +429,7 @@ pub fn main() {
 #[test]
 fn function_literals_get_properly_wrapped_1() {
     assert_js!(
-        r#"pub fn main() {
+        r#"public fn main() {
   fn(n) { n + 1 }(10)
 }
 "#
@@ -440,7 +440,7 @@ fn function_literals_get_properly_wrapped_1() {
 #[test]
 fn function_literals_get_properly_wrapped_2() {
     assert_js!(
-        r#"pub fn main() {
+        r#"public fn main() {
   { fn(n) { n + 1 } }(10)
 }
 "#
@@ -451,7 +451,7 @@ fn function_literals_get_properly_wrapped_2() {
 #[test]
 fn function_literals_get_properly_wrapped_3() {
     assert_js!(
-        r#"pub fn main() {
+        r#"public fn main() {
   { let a = fn(n) { n + 1 } }(10)
 }
 "#

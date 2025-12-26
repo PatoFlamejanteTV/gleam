@@ -10,7 +10,7 @@ fn escape_erlang_reserved_keywords_in_type_names() {
     // list of all reserved words in erlang
     // http://erlang.org/documentation/doc-5.8/doc/reference_manual/introduction.html
     assert_erl!(
-        r#"pub type After { TestAfter }
+        r#"public type After { TestAfter }
 pub type And { TestAnd }
 pub type Andalso { TestAndAlso }
 pub type Band { TestBAnd }

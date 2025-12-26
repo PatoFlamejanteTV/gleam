@@ -40,7 +40,7 @@ pub fn str_to_keyword(word: &str) -> Option<Token> {
         "macro" => Some(Token::Macro),
         "opaque" => Some(Token::Opaque),
         "panic" => Some(Token::Panic),
-        "pub" => Some(Token::Pub),
+        "public" => Some(Token::Pub),
         "test" => Some(Token::Test),
         "todo" => Some(Token::Todo),
         "type" => Some(Token::Type),

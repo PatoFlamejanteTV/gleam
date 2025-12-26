@@ -293,9 +293,9 @@ impl Printer<'_> {
         };
 
         let keywords = if opaque {
-            "pub opaque type "
+            "public opaque type "
         } else {
-            "pub type "
+            "public type "
         };
 
         let type_head = docvec![self.keyword(keywords), self.title(name), arguments];
@@ -355,7 +355,7 @@ impl Printer<'_> {
         };
 
         docvec![
-            self.keyword("pub type "),
+            self.keyword("public type "),
             self.title(name),
             parameters,
             " =",
@@ -369,7 +369,7 @@ impl Printer<'_> {
         self.register_local_type_variable_names(type_);
 
         docvec![
-            self.keyword("pub const "),
+            self.keyword("public const "),
             self.title(name),
             ": ",
             self.type_(type_, PrintMode::Normal)
@@ -397,7 +397,7 @@ impl Printer<'_> {
         };
 
         docvec![
-            self.keyword("pub fn "),
+            self.keyword("public fn "),
             self.title(name),
             arguments,
             " -> ",

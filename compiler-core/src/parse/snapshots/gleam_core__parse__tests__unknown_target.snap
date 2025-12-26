@@ -1,11 +1,12 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\n@target(abc)\npub fn one() {}"
+expression: "\n@target(abc)\npublic fn one() {}"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
 @target(abc)
-pub fn one() {}
+public fn one() {}
 
 ----- ERROR
 error: Syntax error

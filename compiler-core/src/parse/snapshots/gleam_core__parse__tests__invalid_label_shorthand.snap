@@ -1,10 +1,11 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\npub fn main() {\n  wibble(:)\n}\n"
+expression: "\npublic fn main() {\n  wibble(:)\n}\n"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
-pub fn main() {
+public fn main() {
   wibble(:)
 }
 

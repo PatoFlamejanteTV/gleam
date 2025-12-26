@@ -56,7 +56,7 @@ pub fn main(x) {
 fn discarded() {
     // https://github.com/gleam-lang/gleam/issues/788
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let _r = 1
   let _r = 2
   Nil

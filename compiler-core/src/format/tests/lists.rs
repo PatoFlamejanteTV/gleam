@@ -4,7 +4,7 @@ use crate::{assert_format, assert_format_rewrite};
 fn list_with_trailing_comma_is_broken() {
     assert_format_rewrite!(
         "pub fn main() { [ 1, 2, a, ] }",
-        r#"pub fn main() {
+        r#"public fn main() {
   [
     1,
     2,
@@ -31,7 +31,7 @@ fn constant_list_with_trailing_comma_is_broken() {
 #[test]
 fn list_with_trailing_comma_is_kept_broken() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   [
     1,
     2,
@@ -57,7 +57,7 @@ fn constant_list_with_trailing_comma_is_kept_broken() {
 #[test]
 fn list_with_no_trailing_comma_is_packed_on_a_single_line() {
     assert_format_rewrite!(
-        r#"pub fn main() {
+        r#"public fn main() {
   [
     1,
     2,
@@ -65,7 +65,7 @@ fn list_with_no_trailing_comma_is_packed_on_a_single_line() {
   ]
 }
 "#,
-        r#"pub fn main() {
+        r#"public fn main() {
   [1, 2, a]
 }
 "#
@@ -151,7 +151,7 @@ fn constant_list_with_no_comma_is_packed_on_a_single_line_or_split_one_item_per_
 #[test]
 fn simple_list_with_no_comma_is_packed_on_a_single_line_or_split_one_item_per_line() {
     assert_format_rewrite!(
-        r#"pub fn main() {
+        r#"public fn main() {
   [
     "hello",
     "wibble wobble",
@@ -164,7 +164,7 @@ fn simple_list_with_no_comma_is_packed_on_a_single_line_or_split_one_item_per_li
   ]
 }
 "#,
-        r#"pub fn main() {
+        r#"public fn main() {
   [
     "hello",
     "wibble wobble",
@@ -183,7 +183,7 @@ fn simple_list_with_no_comma_is_packed_on_a_single_line_or_split_one_item_per_li
 #[test]
 fn simple_list_with_trailing_comma_and_multiple_items_per_line_is_packed() {
     assert_format_rewrite!(
-        r#"pub fn main() {
+        r#"public fn main() {
   [
     "hello",
     "wibble wobble",
@@ -193,7 +193,7 @@ fn simple_list_with_trailing_comma_and_multiple_items_per_line_is_packed() {
   ]
 }
 "#,
-        r#"pub fn main() {
+        r#"public fn main() {
   [
     "hello", "wibble wobble", "these are all simple strings",
     "and the list will be packed since the following strings are", "on the same",
@@ -207,7 +207,7 @@ fn simple_list_with_trailing_comma_and_multiple_items_per_line_is_packed() {
 #[test]
 fn simple_constant_list_with_trailing_comma_and_multiple_items_per_line_is_packed() {
     assert_format_rewrite!(
-        r#"pub const list = [
+        r#"public const list = [
   "hello",
   "wibble wobble",
   "these are all simple strings",
@@ -215,7 +215,7 @@ fn simple_constant_list_with_trailing_comma_and_multiple_items_per_line_is_packe
   "on the same", "line", "and there's a trailing comma ->",
 ]
 "#,
-        r#"pub const list = [
+        r#"public const list = [
   "hello", "wibble wobble", "these are all simple strings",
   "and the list will be packed since the following strings are", "on the same",
   "line", "and there's a trailing comma ->",
@@ -227,7 +227,7 @@ fn simple_constant_list_with_trailing_comma_and_multiple_items_per_line_is_packe
 #[test]
 fn simple_packed_list_with_trailing_comma_is_kept_with_multiple_items_per_line() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   [
     "hello", "wibble wobble", "these are all simple strings",
     "and the list will be kept packed since it ends with a trailing comma",
@@ -241,11 +241,11 @@ fn simple_packed_list_with_trailing_comma_is_kept_with_multiple_items_per_line()
 #[test]
 fn simple_single_line_list_with_trailing_comma_is_split_one_item_per_line() {
     assert_format_rewrite!(
-        r#"pub fn main() {
+        r#"public fn main() {
   ["these are all simple strings", "but the list won't be packed", "since it ends with a trailing comma ->",]
 }
 "#,
-        r#"pub fn main() {
+        r#"public fn main() {
   [
     "these are all simple strings",
     "but the list won't be packed",
@@ -259,11 +259,11 @@ fn simple_single_line_list_with_trailing_comma_is_split_one_item_per_line() {
 #[test]
 fn simple_single_line_list_with_no_trailing_comma_is_split_one_item_per_line() {
     assert_format_rewrite!(
-        r#"pub fn main() {
+        r#"public fn main() {
   ["these are all simple strings", "but the list won't be packed", "even if it doesn't end with a trailing comma!"]
 }
 "#,
-        r#"pub fn main() {
+        r#"public fn main() {
   [
     "these are all simple strings",
     "but the list won't be packed",

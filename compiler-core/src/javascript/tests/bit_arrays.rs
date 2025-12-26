@@ -1739,7 +1739,7 @@ fn as_module_const() {
 
 #[test]
 fn bit_array_literal_string_constant_is_treated_as_utf8() {
-    assert_js!(r#"pub const a = <<"hello", " ", "world">>"#);
+    assert_js!(r#"public const a = <<"hello", " ", "world">>"#);
 }
 
 #[test]

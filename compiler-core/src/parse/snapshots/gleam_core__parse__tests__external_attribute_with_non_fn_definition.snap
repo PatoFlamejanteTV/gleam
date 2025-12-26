@@ -1,11 +1,12 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\n@external(erlang, \"module\", \"fun\")\npub type Fun = Fun\n"
+expression: "\n@external(erlang, \"module\", \"fun\")\npublic type Fun = Fun\n"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
 @external(erlang, "module", "fun")
-pub type Fun = Fun
+public type Fun = Fun
 
 
 ----- ERROR

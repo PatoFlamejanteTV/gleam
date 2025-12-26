@@ -97,7 +97,7 @@ pub type Option(a) {
 #[test]
 fn multiple_line_custom_type_constructor_field_doc_comments() {
     assert_format!(
-        r#"pub type Thingy {
+        r#"public type Thingy {
   Thingy(
     /// One?
     /// One!
@@ -309,7 +309,7 @@ fn commented_constructors3() {
 #[test]
 fn deprecated_variant_1() {
     assert_format!(
-        r#"pub type One {
+        r#"public type One {
   @deprecated("Deprecated type")
   One
 }
@@ -320,7 +320,7 @@ fn deprecated_variant_1() {
 #[test]
 fn deprecated_variant_2() {
     assert_format!(
-        r#"pub type One {
+        r#"public type One {
   @deprecated("Deprecated type")
   One(Int, Int, Int, Int, Int, Int, Int)
 }
@@ -331,7 +331,7 @@ fn deprecated_variant_2() {
 #[test]
 fn deprecated_variant_3() {
     assert_format!(
-        r#"pub type One {
+        r#"public type One {
   @deprecated("Deprecated type with a very long message")
   One(Int, Int, Int, Int, Int, Int, Int)
 }
@@ -342,7 +342,7 @@ fn deprecated_variant_3() {
 #[test]
 fn deprecated_variant_4() {
     assert_format!(
-        r#"pub type One {
+        r#"public type One {
   @deprecated("Deprecated type with a very long message
 
 It even has multiple lines!

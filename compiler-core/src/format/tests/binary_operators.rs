@@ -4,7 +4,7 @@ use crate::assert_format;
 #[test]
 pub fn long_binary_operation_sequence() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   int.to_string(color.red)
   <> ", "
   <> int.to_string(color.green)
@@ -20,7 +20,7 @@ pub fn long_binary_operation_sequence() {
 #[test]
 pub fn long_comparison_chain() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   trying_a_comparison(this, is, a, function) > with_ints
   && trying_other_comparisons < with_ints
   || trying_other_comparisons <= with_ints
@@ -39,7 +39,7 @@ pub fn long_comparison_chain() {
 #[test]
 pub fn long_chain_mixing_operators() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   variable + variable - variable * variable / variable
   == variable * variable / variable - variable + variable
   || wibble * wobble > 11
@@ -48,7 +48,7 @@ pub fn long_chain_mixing_operators() {
     );
 
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   variable +. variable -. variable *. variable /. variable
   == variable *. variable /. variable -. variable +. variable
   || wibble *. wobble >=. 11
@@ -61,7 +61,7 @@ pub fn long_chain_mixing_operators() {
 #[test]
 fn case_branch_is_not_broken_if_can_fit_on_line() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   case remainder {
     _ if remainder >=. 0.5 && x >=. 0.0 ->
       float_sign(x) *. truncate_float(xabs +. 1.0) /. p
@@ -76,7 +76,7 @@ fn case_branch_is_not_broken_if_can_fit_on_line() {
 #[test]
 fn binary_operation_in_assignment_that_is_almost_80_chars() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let is_vr_implicit =
     dicom_read_context.transfer_syntax == transfer_syntax.ImplicitVrLittleEndian
 }
@@ -88,7 +88,7 @@ fn binary_operation_in_assignment_that_is_almost_80_chars() {
 #[test]
 fn labelled_field_with_binary_operators_are_not_broken_if_they_can_fit() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   Ok(Lesson(
     name: names.name,
     text: text,
@@ -102,7 +102,7 @@ fn labelled_field_with_binary_operators_are_not_broken_if_they_can_fit() {
     );
 
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   Ok(Lesson(
     name: names.name,
     text:,
@@ -119,7 +119,7 @@ fn labelled_field_with_binary_operators_are_not_broken_if_they_can_fit() {
     );
 
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   Ok(wibble(
     name: names.name,
     text:,
@@ -133,7 +133,7 @@ fn labelled_field_with_binary_operators_are_not_broken_if_they_can_fit() {
     );
 
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   Ok(wibble(
     name: names.name,
     text:,
@@ -153,7 +153,7 @@ fn labelled_field_with_binary_operators_are_not_broken_if_they_can_fit() {
 #[test]
 fn math_binops_kept_on_a_single_line_in_pipes() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   1 + 2 * 3 / 4 - 5
   |> wibble
   |> wobble
@@ -162,7 +162,7 @@ fn math_binops_kept_on_a_single_line_in_pipes() {
     );
 
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   1 +. 2 *. 3 /. 4 -. 5
   |> wibble
   |> wobble
@@ -174,7 +174,7 @@ fn math_binops_kept_on_a_single_line_in_pipes() {
 #[test]
 fn binop_used_as_function_arguments_gets_nested() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   wibble(
     a_variable_with_a_long_name
       <> another_variable_with_a_long_name
@@ -189,7 +189,7 @@ fn binop_used_as_function_arguments_gets_nested() {
 #[test]
 fn binop_is_not_nested_if_the_only_argument() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   wibble(
     a_variable_with_a_long_name
     <> another_variable_with_a_long_name
@@ -203,7 +203,7 @@ fn binop_is_not_nested_if_the_only_argument() {
 #[test]
 fn binop_inside_list_gets_nested() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   [
     wibble,
     a_variable_with_a_long_name
@@ -218,7 +218,7 @@ fn binop_inside_list_gets_nested() {
 #[test]
 fn binop_inside_list_is_not_nested_if_only_item() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   [
     a_variable_with_a_long_name
     <> another_variable_with_a_long_name
@@ -232,7 +232,7 @@ fn binop_inside_list_is_not_nested_if_only_item() {
 #[test]
 fn binop_inside_tuple_gets_nested() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   #(
     wibble,
     a_variable_with_a_long_name
@@ -247,7 +247,7 @@ fn binop_inside_tuple_gets_nested() {
 #[test]
 fn binop_inside_tuple_is_not_nested_if_only_item() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   #(
     a_variable_with_a_long_name
     <> another_variable_with_a_long_name
@@ -262,7 +262,7 @@ fn binop_inside_tuple_is_not_nested_if_only_item() {
 #[test]
 fn binop_as_argument_in_variant_with_spread_gets_nested() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   Wibble(
     ..wibble,
     label: string

@@ -1,10 +1,11 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "@go_faster()\npub fn main() { 1 }"
+expression: "@go_faster()\npublic fn main() { 1 }"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 @go_faster()
-pub fn main() { 1 }
+public fn main() { 1 }
 
 ----- ERROR
 error: Syntax error

@@ -35,7 +35,7 @@ fn main(wibble x: Int, y: Int) -> Int
 #[test]
 fn all_labelled() {
     assert_module_infer!(
-        r#"pub fn prepend(to list: List(a), this item: a) -> List(a) {
+        r#"public fn prepend(to list: List(a), this item: a) -> List(a) {
   [item, ..list]
 }
 "#,

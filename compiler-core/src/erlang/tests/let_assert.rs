@@ -4,7 +4,7 @@ use crate::assert_erl;
 fn one_var() {
     // One var
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert Ok(y) = Ok(1)
   y
 }"#
@@ -15,7 +15,7 @@ fn one_var() {
 fn more_than_one_var() {
     // More vars
     assert_erl!(
-        r#"pub fn go(x) {
+        r#"public fn go(x) {
   let assert [1, a, b, c] = x
   [a, b, c]
 }"#
@@ -26,7 +26,7 @@ fn more_than_one_var() {
 fn pattern_let() {
     // Pattern::Let
     assert_erl!(
-        r#"pub fn go(x) {
+        r#"public fn go(x) {
   let assert [1 as a, b, c] = x
   [a, b, c]
 }"#
@@ -37,7 +37,7 @@ fn pattern_let() {
 fn variable_rewrites() {
     // Following asserts use appropriate variable rewrites
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert Ok(y) = Ok(1)
   let assert Ok(y) = Ok(1)
   y
@@ -72,7 +72,7 @@ pub fn expect(value, message) {
 #[test]
 fn just_variable() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert x = Ok(1)
   x
 }"#
@@ -82,7 +82,7 @@ fn just_variable() {
 #[test]
 fn tuple_pattern() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert #(a, b, c) = #(1, 2, 3)
   a + b + c
 }"#
@@ -92,7 +92,7 @@ fn tuple_pattern() {
 #[test]
 fn int_pattern() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert 1 = 2
 }"#
     );
@@ -101,7 +101,7 @@ fn int_pattern() {
 #[test]
 fn float_pattern() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert 1.5 = 5.1
 }"#
     );
@@ -110,7 +110,7 @@ fn float_pattern() {
 #[test]
 fn string_pattern() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert "Hello!" = "Hel" <> "lo!"
 }"#
     );
@@ -119,7 +119,7 @@ fn string_pattern() {
 #[test]
 fn assignment_pattern() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert 123 as x = 123
   x
 }"#
@@ -129,7 +129,7 @@ fn assignment_pattern() {
 #[test]
 fn discard_pattern() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert _ = 123
 }"#
     );
@@ -138,7 +138,7 @@ fn discard_pattern() {
 #[test]
 fn list_pattern() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert [1, x, 3] = [1, 2, 3]
   x
 }"#
@@ -148,7 +148,7 @@ fn list_pattern() {
 #[test]
 fn list_pattern_with_multiple_variables() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert [a, b, c] = [1, 2, 3]
   a + b + c
 }"#
@@ -158,7 +158,7 @@ fn list_pattern_with_multiple_variables() {
 #[test]
 fn constructor_pattern() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert Ok(x) = Error(Nil)
   x
 }"#
@@ -183,7 +183,7 @@ pub fn go() {
 #[test]
 fn bit_array_pattern() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert <<a:2, b:3, c:3>> = <<123>>
   a + b + c
 }"#
@@ -193,7 +193,7 @@ fn bit_array_pattern() {
 #[test]
 fn string_prefix_pattern() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert "Hello " <> name = "Hello John"
   name
 }"#
@@ -203,7 +203,7 @@ fn string_prefix_pattern() {
 #[test]
 fn string_prefix_pattern_with_prefix_binding() {
     assert_erl!(
-        r#"pub fn go() {
+        r#"public fn go() {
   let assert "Hello " as greeting <> name = "Hello John"
   #(greeting, name)
 }"#

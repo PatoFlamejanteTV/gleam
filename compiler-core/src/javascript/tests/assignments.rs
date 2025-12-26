@@ -13,12 +13,12 @@ pub fn go(x) {
 
 #[test]
 fn assert() {
-    assert_js!(r#"pub fn go(x) { let assert 1 = x }"#,);
+    assert_js!(r#"public fn go(x) { let assert 1 = x }"#,);
 }
 
 #[test]
 fn assert1() {
-    assert_js!(r#"pub fn go(x) { let assert #(1, 2) = x }"#,);
+    assert_js!(r#"public fn go(x) { let assert #(1, 2) = x }"#,);
 }
 
 #[test]
@@ -80,13 +80,13 @@ fn second() {
 
 #[test]
 fn returning_literal_subject() {
-    assert_js!(r#"pub fn go(x) { let assert 1 = x + 1 }"#,);
+    assert_js!(r#"public fn go(x) { let assert 1 = x + 1 }"#,);
 }
 
 #[test]
 fn rebound_argument() {
     assert_js!(
-        r#"pub fn main(x) {
+        r#"public fn main(x) {
   let x = False
   x
 }
@@ -97,7 +97,7 @@ fn rebound_argument() {
 #[test]
 fn rebound_function() {
     assert_js!(
-        r#"pub fn x() {
+        r#"public fn x() {
   Nil
 }
 
@@ -112,7 +112,7 @@ pub fn main() {
 #[test]
 fn rebound_function_and_arg() {
     assert_js!(
-        r#"pub fn x() {
+        r#"public fn x() {
   Nil
 }
 
@@ -127,7 +127,7 @@ pub fn main(x) {
 #[test]
 fn variable_used_in_pattern_and_assignment() {
     assert_js!(
-        r#"pub fn main(x) {
+        r#"public fn main(x) {
   let #(x) = #(x)
   x
 }

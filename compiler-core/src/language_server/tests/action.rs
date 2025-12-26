@@ -499,7 +499,7 @@ fn remove_echo() {
 fn remove_echo_with_message() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   echo 1 + 2 as "message"
 }"#,
         find_position_of("echo").to_selection()
@@ -510,7 +510,7 @@ fn remove_echo_with_message() {
 fn remove_echo_with_message_and_comment() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   echo 1 + 2
     // Hello!
     as "message"
@@ -523,7 +523,7 @@ fn remove_echo_with_message_and_comment() {
 fn remove_echo_with_message_and_comment_2() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   echo 1 + 2 as
     // Hello!
     "message"
@@ -536,7 +536,7 @@ fn remove_echo_with_message_and_comment_2() {
 fn remove_echo_with_message_and_comment_3() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   echo 1 + 2 as
     // Hello!
     "message"
@@ -562,7 +562,7 @@ fn remove_echo_selecting_expression() {
 fn remove_echo_selecting_message() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   echo 1 + 2 as "message"
 }"#,
         find_position_of("message").to_selection()
@@ -597,7 +597,7 @@ fn remove_echo_in_pipeline_step() {
 fn remove_echo_in_pipeline_step_with_message() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   [1, 2, 3]
   |> echo as message
   |> wibble
@@ -621,7 +621,7 @@ fn remove_echo_in_single_line_pipeline_step() {
 fn remove_echo_in_single_line_pipeline_step_with_message() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   [1, 2, 3] |> echo as "message" |> wibble
 }"#,
         find_position_of("echo").to_selection()
@@ -645,7 +645,7 @@ fn remove_echo_last_in_long_pipeline_step() {
 fn remove_echo_last_in_long_pipeline_step_with_message() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   [1, 2, 3]
   |> wibble
   |> echo as "message"
@@ -670,7 +670,7 @@ fn remove_echo_last_in_short_pipeline_step() {
 fn remove_echo_last_in_short_pipeline_step_with_message() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   [1, 2, 3]
   |> echo as "message"
 }"#,
@@ -740,7 +740,7 @@ fn remove_echo_removes_entire_echo_statement_used_with_literals() {
 fn remove_echo_removes_entire_echo_statement_used_with_literals_and_message() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   echo 1 as "message"
   Nil
 }"#,
@@ -765,7 +765,7 @@ fn remove_echo_removes_entire_echo_statement_used_with_a_var() {
 fn remove_echo_removes_multiple_entire_echo_statement_used_with_literals() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   echo 1
   echo "wibble"
   Nil
@@ -778,7 +778,7 @@ fn remove_echo_removes_multiple_entire_echo_statement_used_with_literals() {
 fn remove_echo_removes_multiple_entire_echo_statement_used_with_literals_but_stops_at_comments() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   echo 1
 
   // Oh no I hope I'm not deleted by the code action!!
@@ -806,7 +806,7 @@ fn remove_echo_removes_entire_echo_statement_used_with_literals_in_a_fn() {
 fn remove_echo_removes_multiple_entire_echo_statement_used_with_literals_in_a_fn() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   fn() {
     echo 1
     echo "wibble"
@@ -832,7 +832,7 @@ fn remove_echo_removes_does_not_remove_entire_echo_statement_if_its_the_return()
 fn remove_echo_with_message_removes_does_not_remove_entire_echo_statement_if_its_the_return() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   echo 1 as "message"
 }"#,
         find_position_of("echo").to_selection()
@@ -843,7 +843,7 @@ fn remove_echo_with_message_removes_does_not_remove_entire_echo_statement_if_its
 fn remove_echo_removes_does_not_remove_entire_echo_statement_if_its_the_return_of_a_fn() {
     assert_code_action!(
         REMOVE_ALL_ECHOS_FROM_THIS_MODULE,
-        r#"pub fn main() {
+        r#"public fn main() {
   fn() {
     echo 1
   }
@@ -856,7 +856,7 @@ fn remove_echo_removes_does_not_remove_entire_echo_statement_if_its_the_return_o
 fn split_string() {
     assert_code_action!(
         INTERPOLATE_STRING,
-        r#"pub fn main() {
+        r#"public fn main() {
   "wibble wobble woo"
 }"#,
         find_position_of("wobble").to_selection()
@@ -867,7 +867,7 @@ fn split_string() {
 fn no_split_string_right_at_the_start() {
     assert_no_code_actions!(
         INTERPOLATE_STRING,
-        r#"pub fn main() {
+        r#"public fn main() {
   "wibble wobble woo"
 }"#,
         find_position_of("wibble").to_selection()
@@ -878,7 +878,7 @@ fn no_split_string_right_at_the_start() {
 fn no_split_string_right_at_the_end() {
     assert_no_code_actions!(
         INTERPOLATE_STRING,
-        r#"pub fn main() {
+        r#"public fn main() {
   "wibble wobble woo"
 }"#,
         find_position_of("\"").nth_occurrence(2).to_selection()
@@ -889,7 +889,7 @@ fn no_split_string_right_at_the_end() {
 fn no_split_string_before_the_start() {
     assert_no_code_actions!(
         INTERPOLATE_STRING,
-        r#"pub fn main() {
+        r#"public fn main() {
   "wibble wobble woo"
 }"#,
         find_position_of("\"").to_selection()
@@ -900,7 +900,7 @@ fn no_split_string_before_the_start() {
 fn no_split_string_after_the_end() {
     assert_no_code_actions!(
         INTERPOLATE_STRING,
-        r#"pub fn main() {
+        r#"public fn main() {
   "wibble wobble woo"//we need this comment so we can put the cursor _after_ the closing quote
 }"#,
         find_position_of("\"/").under_last_char().to_selection()
@@ -911,7 +911,7 @@ fn no_split_string_after_the_end() {
 fn interpolate_string_inside_string() {
     assert_code_action!(
         INTERPOLATE_STRING,
-        r#"pub fn main() {
+        r#"public fn main() {
   "wibble wobble woo"
 }"#,
         find_position_of("wobble").select_until(find_position_of("wobble ").under_last_char()),
@@ -922,7 +922,7 @@ fn interpolate_string_inside_string() {
 fn fallback_to_split_string_when_selecting_invalid_name() {
     assert_code_action!(
         INTERPOLATE_STRING,
-        r#"pub fn main() {
+        r#"public fn main() {
   "wibble wobble woo woo"
 }"#,
         find_position_of("wobble").select_until(find_position_of("woo ").under_last_char()),
@@ -933,7 +933,7 @@ fn fallback_to_split_string_when_selecting_invalid_name() {
 fn splitting_string_as_first_pipeline_step_inserts_brackets() {
     assert_code_action!(
         INTERPOLATE_STRING,
-        r#"pub fn main() {
+        r#"public fn main() {
   "wibble  wobble" |> io.println
 }"#,
         find_position_of(" wobble").to_selection(),
@@ -944,7 +944,7 @@ fn splitting_string_as_first_pipeline_step_inserts_brackets() {
 fn interpolating_string_as_first_pipeline_step_inserts_brackets() {
     assert_code_action!(
         INTERPOLATE_STRING,
-        r#"pub fn main() {
+        r#"public fn main() {
   "wibble wobble woo" |> io.println
 }"#,
         find_position_of("wobble ").select_until(find_position_of("wobble ").under_last_char()),
@@ -1544,7 +1544,7 @@ fn rename_invalid_bit_array_pattern_discard() {
 fn rename_invalid_string_prefix_pattern() {
     assert_code_action!(
         "Rename to cool_suffix",
-        r#"pub fn main() {
+        r#"public fn main() {
     let assert "prefix" <> coolSuffix = "prefix-suffix"
 }"#,
         find_position_of("<>").select_until(find_position_of("-suffix"))
@@ -1555,7 +1555,7 @@ fn rename_invalid_string_prefix_pattern() {
 fn rename_invalid_string_prefix_pattern_discard() {
     assert_code_action!(
         "Rename to _boring_suffix",
-        r#"pub fn main() {
+        r#"public fn main() {
     let assert "prefix" <> _boringSuffix = "prefix-suffix"
 }"#,
         find_position_of("<>").select_until(find_position_of("Suffix"))
@@ -1566,7 +1566,7 @@ fn rename_invalid_string_prefix_pattern_discard() {
 fn rename_invalid_string_prefix_pattern_alias() {
     assert_code_action!(
         "Rename to the_prefix",
-        r#"pub fn main() {
+        r#"public fn main() {
     let assert "prefix" as thePrefix <> _suffix = "prefix-suffix"
 }"#,
         find_position_of("prefix").select_until(find_position_of("-suffix"))
@@ -1717,7 +1717,7 @@ fn test_convert_let_assert_bit_array_to_case() {
 fn test_convert_let_assert_string_prefix_to_case() {
     assert_code_action!(
         CONVERT_TO_CASE,
-        r#"pub fn main() {
+        r#"public fn main() {
   let assert "_" <> thing = "_Hello"
 }"#,
         find_position_of("_").to_selection()
@@ -1728,7 +1728,7 @@ fn test_convert_let_assert_string_prefix_to_case() {
 fn test_convert_let_assert_string_prefix_pattern_alias_to_case() {
     assert_code_action!(
         CONVERT_TO_CASE,
-        r#"pub fn main() {
+        r#"public fn main() {
     let assert "123" as one_two_three <> rest = "123456"
 }"#,
         find_position_of("123").select_until(find_position_of("123456")),
@@ -1739,7 +1739,7 @@ fn test_convert_let_assert_string_prefix_pattern_alias_to_case() {
 fn test_convert_inner_let_assert_to_case() {
     assert_code_action!(
         CONVERT_TO_CASE,
-        r#"pub fn main() {
+        r#"public fn main() {
     let assert [wibble] = {
         let assert Ok(wobble) = {
             Ok(1)
@@ -1755,7 +1755,7 @@ fn test_convert_inner_let_assert_to_case() {
 fn test_convert_outer_let_assert_to_case() {
     assert_code_action!(
         CONVERT_TO_CASE,
-        r#"pub fn main() {
+        r#"public fn main() {
     let assert [wibble] = {
         let assert Ok(wobble) = {
             Ok(1)
@@ -5344,7 +5344,7 @@ fn inexhaustive_let_bit_array_to_case() {
 fn inexhaustive_let_string_prefix_to_case() {
     assert_code_action!(
         CONVERT_TO_CASE,
-        r#"pub fn main() {
+        r#"public fn main() {
   let "_" <> thing = "_Hello"
 }"#,
         find_position_of("let").select_until(find_position_of("=")),
@@ -5355,7 +5355,7 @@ fn inexhaustive_let_string_prefix_to_case() {
 fn inexhaustive_let_string_prefix_pattern_alias_to_case() {
     assert_code_action!(
         CONVERT_TO_CASE,
-        r#"pub fn main() {
+        r#"public fn main() {
   let "123" as one_two_three <> rest = "123456"
 }"#,
         find_position_of("let").select_until(find_position_of("=")),
@@ -5366,7 +5366,7 @@ fn inexhaustive_let_string_prefix_pattern_alias_to_case() {
 fn inner_inexhaustive_let_to_case() {
     assert_code_action!(
         CONVERT_TO_CASE,
-        r#"pub fn main(result) {
+        r#"public fn main(result) {
   let [wibble] = {
     let Ok(wobble) = {
       result
@@ -5382,7 +5382,7 @@ fn inner_inexhaustive_let_to_case() {
 fn outer_inexhaustive_let_to_case() {
     assert_code_action!(
         CONVERT_TO_CASE,
-        r#"pub fn main(result) {
+        r#"public fn main(result) {
   let [wibble] = {
     let Ok(wobble) = {
       result
@@ -5398,7 +5398,7 @@ fn outer_inexhaustive_let_to_case() {
 fn no_code_action_for_exhaustive_let_to_case() {
     assert_no_code_actions!(
         CONVERT_TO_CASE,
-        r#"pub fn first(pair) {
+        r#"public fn first(pair) {
   let #(first, second) = pair
   first
 }"#,
@@ -5410,7 +5410,7 @@ fn no_code_action_for_exhaustive_let_to_case() {
 fn extract_variable() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   list.map([1, 2, 3], int.add(1, _))
 }"#,
         find_position_of("[1").select_until(find_position_of("2"))
@@ -5421,7 +5421,7 @@ fn extract_variable() {
 fn extract_variable_does_not_extract_a_variable() {
     assert_no_code_actions!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
     let z = 1
     let a = [1, 2, z]
 }"#,
@@ -5433,7 +5433,7 @@ fn extract_variable_does_not_extract_a_variable() {
 fn extract_variable_does_not_extract_top_level_statement() {
     assert_no_code_actions!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   let wibble = 1
 }"#,
         find_position_of("1").to_selection()
@@ -5444,7 +5444,7 @@ fn extract_variable_does_not_extract_top_level_statement() {
 fn extract_variable_does_not_extract_top_level_statement_inside_block() {
     assert_no_code_actions!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   let x = {
     let y = "y"
     let w = "w" <> y
@@ -5490,7 +5490,7 @@ pub fn try(result: Result(a, e), fun: fn(a) -> Result(b, e)) -> Result(b, e) { t
 fn extract_variable_does_not_extract_panic() {
     assert_no_code_actions!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   let x = 1
   panic
 }"#,
@@ -5502,7 +5502,7 @@ fn extract_variable_does_not_extract_panic() {
 fn extract_variable_does_not_extract_echo() {
     assert_no_code_actions!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   let x = 1
   echo x
 }"#,
@@ -5514,7 +5514,7 @@ fn extract_variable_does_not_extract_echo() {
 fn extract_variable_does_not_extract_assignment() {
     assert_no_code_actions!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   let x = 1
 }"#,
         find_position_of("x").to_selection()
@@ -5627,7 +5627,7 @@ fn map(list, fun) { todo }
 fn extract_variable_does_not_extract_the_last_pipeline_step() {
     assert_no_code_actions!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
     [1, 2, 3]
     |> map(todo)
     |> map(todo)
@@ -5658,7 +5658,7 @@ pub fn map(l, f) { todo }
 fn extract_variable_from_capture_arguments() {
     assert_no_code_actions!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   int.add(1, _)
 }"#,
         find_position_of("_").to_selection()
@@ -5669,7 +5669,7 @@ fn extract_variable_from_capture_arguments() {
 fn extract_variable_from_capture_arguments_2() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   int.add(11, _)
 }"#,
         find_position_of("11").to_selection()
@@ -5680,7 +5680,7 @@ fn extract_variable_from_capture_arguments_2() {
 fn extract_variable_3() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   list.map([1, 2, 3], todo, todo)
 }"#,
         find_position_of("todo")
@@ -5693,7 +5693,7 @@ fn extract_variable_3() {
 fn extract_variable_inside_multiline_function_call() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   list.map(
     [1, 2, 3],
     int.add(1, _),
@@ -5707,7 +5707,7 @@ fn extract_variable_inside_multiline_function_call() {
 fn extract_variable_in_case_branch() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
     case wibble {
       _ -> [1, 2, 3]
     }
@@ -5720,7 +5720,7 @@ fn extract_variable_in_case_branch() {
 fn extract_variable_in_multiline_case_subject_branch() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
     case
         list.map(
           [1, 2, 3],
@@ -5738,7 +5738,7 @@ fn extract_variable_in_multiline_case_subject_branch() {
 fn extract_variable_in_case_branch_using_var() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   case todo {
     Ok(value) -> 2 * value + 1
     Error(_) -> panic
@@ -5752,7 +5752,7 @@ fn extract_variable_in_case_branch_using_var() {
 fn extract_variable_in_case_branch_from_second_arg() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   case todo {
     Ok(_) -> #(Ok(1), Error("s"))
     Error(_) -> panic
@@ -5766,7 +5766,7 @@ fn extract_variable_in_case_branch_from_second_arg() {
 fn extract_variable_in_use() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
     use <- wibble([1, 2, 3])
     todo
 }"#,
@@ -5778,7 +5778,7 @@ fn extract_variable_in_use() {
 fn extract_variable_inside_use_body() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
     use <- wibble(todo)
     list.map([1, 2, 3], int.add(1, _))
     todo
@@ -5791,7 +5791,7 @@ fn extract_variable_inside_use_body() {
 fn extract_variable_in_multiline_use() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
     use <- wibble(
         [1, 2, 3]
     )
@@ -5805,7 +5805,7 @@ fn extract_variable_in_multiline_use() {
 fn extract_variable_after_nested_anonymous_function() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
     let f = fn() {
         let x = 1 + 2
         let ff = fn() {
@@ -5827,7 +5827,7 @@ fn extract_variable_after_nested_anonymous_function() {
 fn extract_variable_in_nested_anonymous_function() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
     let f = fn() {
         let x = 1 + 2
         let ff = fn() {
@@ -5849,7 +5849,7 @@ fn extract_variable_in_nested_anonymous_function() {
 fn extract_variable_in_double_nested_anonymous_function() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
     let f = fn() {
         let x = 1 + 2
         let ff = fn() {
@@ -5871,7 +5871,7 @@ fn extract_variable_in_double_nested_anonymous_function() {
 fn extract_variable_in_block() {
     assert_code_action!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
   {
     todo
     wibble([1, 2, 3])
@@ -6036,7 +6036,7 @@ pub fn main() {
 fn extract_constant_from_declaration_of_float() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = 3.1415
 }"#,
         find_position_of("3").select_until(find_position_of("5"))
@@ -6063,7 +6063,7 @@ pub fn main() {
 fn extract_constant_from_declaration_of_bit_array() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let b = <<"arr":utf32>>
 }"#,
         find_position_of("u")
@@ -6094,7 +6094,7 @@ pub fn main() {
 fn extract_constant_from_declaration_of_bin_op() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let twelve = "1" <> "2"
 }"#,
         find_position_of("<").to_selection()
@@ -6121,7 +6121,7 @@ pub fn main() {
 fn extract_constant_from_declaration_of_int() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = 125
 }"#,
         find_position_of("1").select_until(find_position_of("5"))
@@ -6148,7 +6148,7 @@ pub fn main() {
 fn extract_constant_from_declaration_of_list() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = [3.1415, 0.33333333]
 }"#,
         find_position_of("[").to_selection()
@@ -6175,7 +6175,7 @@ pub fn main() {
 fn extract_constant_from_declaration_of_nested_inside() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = #([1, 2, 3], [3, 2, 1])
 }"#,
         find_position_of("[").to_selection()
@@ -6186,7 +6186,7 @@ fn extract_constant_from_declaration_of_nested_inside() {
 fn extract_constant_from_declaration_of_nested_outside() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = #([1, 2, 3], [3, 2, 1])
 }"#,
         find_position_of("#").select_until(find_position_of("(").nth_occurrence(2))
@@ -6213,7 +6213,7 @@ pub fn main() {
 fn extract_constant_from_declaration_of_string() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = "constant"
 }"#,
         find_position_of("\"").select_until(find_position_of("\""))
@@ -6240,7 +6240,7 @@ pub fn main() {
 fn extract_constant_from_declaration_of_tuple() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let #(one, two, three) = #("one", "two", "three")
 }"#,
         find_position_of("#")
@@ -6269,7 +6269,7 @@ pub fn main() {
 fn extract_constant_from_literal_within_list() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = ["constant", todo]
 }"#,
         find_position_of("\"").select_until(find_position_of("\""))
@@ -6293,7 +6293,7 @@ pub fn main() {
 fn extract_constant_from_literal_within_tuple() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = #(0.333334, todo)
 }"#,
         find_position_of("0").select_until(find_position_of("4"))
@@ -6317,7 +6317,7 @@ pub fn main() {
 fn extract_constant_from_nested_inside_in_expr() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   [#("a", 0), #("b", 1), #("a", 2)]
   |> key_filter("a")
 }"#,
@@ -6329,7 +6329,7 @@ fn extract_constant_from_nested_inside_in_expr() {
 fn extract_constant_from_nested_outside_in_expr() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   [#("a", 0), #("b", 1), #("a", 2)]
   |> key_filter("a")
 }"#,
@@ -6341,7 +6341,7 @@ fn extract_constant_from_nested_outside_in_expr() {
 fn extract_constant_from_return_of_float() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   0.25
 }"#,
         find_position_of("0").select_until(find_position_of("5"))
@@ -6352,7 +6352,7 @@ fn extract_constant_from_return_of_float() {
 fn extract_constant_from_return_of_int() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   100
 }"#,
         find_position_of("1").select_until(find_position_of("0").nth_occurrence(2))
@@ -6363,7 +6363,7 @@ fn extract_constant_from_return_of_int() {
 fn extract_constant_from_return_of_list() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   [1, 2, 3, 4]
 }"#,
         find_position_of("[").to_selection()
@@ -6374,7 +6374,7 @@ fn extract_constant_from_return_of_list() {
 fn extract_constant_from_return_of_nested_outside() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   [#(0.25, 0.75), #(0.5, 1.5)]
 }"#,
         find_position_of("#").select_until(find_position_of("(").nth_occurrence(2))
@@ -6385,7 +6385,7 @@ fn extract_constant_from_return_of_nested_outside() {
 fn extract_constant_from_return_of_string() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   "constant"
 }"#,
         find_position_of("\"").select_until(find_position_of("\""))
@@ -6396,7 +6396,7 @@ fn extract_constant_from_return_of_string() {
 fn extract_constant_from_return_of_tuple() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   #(0.25, 0.75)
 }"#,
         find_position_of("#").select_until(find_position_of("(").nth_occurrence(2))
@@ -6517,7 +6517,7 @@ pub fn main() {
 fn extract_constant_from_nil() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let x = Nil
   x
 }
@@ -6530,7 +6530,7 @@ fn extract_constant_from_nil() {
 fn extract_constant_from_non_record_variant_1() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub type Auth {
+        r#"public type Auth {
   Verified
   Unverified
 }
@@ -6552,7 +6552,7 @@ pub fn main() {
 fn extract_constant_from_non_record_variant_2() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub type Auth {
+        r#"public type Auth {
   Verified
   Unverified
 }
@@ -6573,7 +6573,7 @@ pub fn main() {
 fn extract_constant_from_record_variant_1() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub type Auth {
+        r#"public type Auth {
   Verified(String)
   Unverified
 }
@@ -6592,7 +6592,7 @@ pub fn main() {
 fn extract_constant_from_record_variant_2() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub type Auth {
+        r#"public type Auth {
   Verified(Int)
   Unverified
 }
@@ -6616,7 +6616,7 @@ pub fn main() {
 fn extract_constant_from_inside_block() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let fahrenheit = {
     let degrees = 64 + 32
     degrees
@@ -6630,7 +6630,7 @@ fn extract_constant_from_inside_block() {
 fn extract_constant_from_inside_case() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main(result) {
+        r#"public fn main(result) {
   case result {
     Ok(value) -> value + 1
     Error(_) -> panic
@@ -6644,7 +6644,7 @@ fn extract_constant_from_inside_case() {
 fn extract_constant_from_inside_use_1() {
     assert_code_action!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   use x <- result.try(todo)
   Ok(123)
 }"#,
@@ -6670,7 +6670,7 @@ pub fn main() {
 fn do_not_extract_constant_from_pattern() {
     assert_no_code_actions!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let #(one, two) = #(1, 2)
   one
 }"#,
@@ -6713,7 +6713,7 @@ pub fn main() {
 fn do_not_extract_constant_from_bin_op() {
     assert_no_code_actions!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let res = 64 < 32
   res
 }"#,
@@ -6725,7 +6725,7 @@ fn do_not_extract_constant_from_bin_op() {
 fn do_not_extract_constant_from_bit_array_1() {
     assert_no_code_actions!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = "constant"
   let res = <<c:utf16>>
   res
@@ -6770,7 +6770,7 @@ pub fn main() {
 fn do_not_extract_constant_from_list_1() {
     assert_no_code_actions!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = ["constant", todo]
   c
 }"#,
@@ -6782,7 +6782,7 @@ fn do_not_extract_constant_from_list_1() {
 fn do_not_extract_constant_from_list_2() {
     assert_no_code_actions!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   [10, todo]
 }"#,
         find_position_of("[").to_selection()
@@ -6793,7 +6793,7 @@ fn do_not_extract_constant_from_list_2() {
 fn do_not_extract_constant_from_list_3() {
     assert_no_code_actions!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = [0.25, todo]
   c
 }"#,
@@ -6805,7 +6805,7 @@ fn do_not_extract_constant_from_list_3() {
 fn do_not_extract_constant_from_tuple_1() {
     assert_no_code_actions!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = #("constant", todo)
   c
 }"#,
@@ -6817,7 +6817,7 @@ fn do_not_extract_constant_from_tuple_1() {
 fn do_not_extract_constant_from_tuple_2() {
     assert_no_code_actions!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   #(10, todo)
 }"#,
         find_position_of("#").select_until(find_position_of("("))
@@ -6828,7 +6828,7 @@ fn do_not_extract_constant_from_tuple_2() {
 fn do_not_extract_constant_from_tuple_3() {
     assert_no_code_actions!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = #(0.25, todo)
   c
 }"#,
@@ -6840,7 +6840,7 @@ fn do_not_extract_constant_from_tuple_3() {
 fn do_not_extract_constant_from_nested_1() {
     assert_no_code_actions!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   let c = list.unzip([#(1, 2), #(3, todo)])
   c
 }"#,
@@ -6852,7 +6852,7 @@ fn do_not_extract_constant_from_nested_1() {
 fn do_not_extract_constant_from_nested_2() {
     assert_no_code_actions!(
         EXTRACT_CONSTANT,
-        r#"pub fn main() {
+        r#"public fn main() {
   [[1.25, 1], [0.25, todo]]
 }"#,
         find_position_of("[").to_selection()
@@ -6947,7 +6947,7 @@ pub fn main() {
 fn do_not_extract_top_level_expression_statement() {
     assert_no_code_actions!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
     1
 }
 "#,
@@ -6959,7 +6959,7 @@ fn do_not_extract_top_level_expression_statement() {
 fn do_not_extract_top_level_expression_in_let_statement() {
     assert_no_code_actions!(
         EXTRACT_VARIABLE,
-        r#"pub fn main() {
+        r#"public fn main() {
     let a = 1
 }
 "#,
@@ -6986,7 +6986,7 @@ pub fn main() {
 fn expand_function_capture() {
     assert_code_action!(
         EXPAND_FUNCTION_CAPTURE,
-        r#"pub fn main() {
+        r#"public fn main() {
   wibble(_, 1)
 }"#,
         find_position_of("_").to_selection()
@@ -6997,7 +6997,7 @@ fn expand_function_capture() {
 fn expand_function_capture_2() {
     assert_code_action!(
         EXPAND_FUNCTION_CAPTURE,
-        r#"pub fn main() {
+        r#"public fn main() {
   wibble(1, _)
 }"#,
         find_position_of("wibble").to_selection()
@@ -7008,7 +7008,7 @@ fn expand_function_capture_2() {
 fn expand_function_capture_does_not_shadow_variables() {
     assert_code_action!(
         EXPAND_FUNCTION_CAPTURE,
-        r#"pub fn main() {
+        r#"public fn main() {
   let value = 1
   let value_2 = 2
   wibble(value, _, value_2)
@@ -7021,7 +7021,7 @@ fn expand_function_capture_does_not_shadow_variables() {
 fn expand_function_capture_picks_a_name_based_on_the_type_of_the_hole() {
     assert_code_action!(
         EXPAND_FUNCTION_CAPTURE,
-        r#"pub fn main() {
+        r#"public fn main() {
   [1, 2, 3]
   |> map(add(_, 1))
 }
@@ -9068,7 +9068,7 @@ fn wrap_case_clause_with_multiple_patterns_in_block() {
 fn wrap_case_clause_inside_assignment_in_block() {
     assert_code_action!(
         WRAP_IN_BLOCK,
-        r#"pub type PokemonType {
+        r#"public type PokemonType {
   Air
   Water
   Fire
@@ -9163,7 +9163,7 @@ pub fn f(option) {
 fn wrap_assignment_value_in_block() {
     assert_code_action!(
         WRAP_IN_BLOCK,
-        r#"pub fn main() {
+        r#"public fn main() {
   let var = "value"
 }"#,
         find_position_of("value").select_until(find_position_of("e").nth_occurrence(2))
@@ -9174,7 +9174,7 @@ fn wrap_assignment_value_in_block() {
 fn do_not_wrap_assignment_value_in_block() {
     assert_no_code_actions!(
         WRAP_IN_BLOCK,
-        r#"pub fn main() {
+        r#"public fn main() {
   let var = "value"
 }"#,
         find_position_of("var").to_selection()
@@ -10151,7 +10151,7 @@ fn collapse_nested_case_combines_inner_and_outer_guards_and_adds_parentheses_whe
 fn collapse_nested_case_combines_list_with_unformatted_tail() {
     assert_code_action!(
         COLLAPSE_NESTED_CASE,
-        r#"pub fn main(elems: List(String)) {
+        r#"public fn main(elems: List(String)) {
   case elems {
     [first, .. rest_of_list] ->
       case rest_of_list {
@@ -10172,7 +10172,7 @@ fn collapse_nested_case_combines_list_with_unformatted_tail() {
 fn collapse_nested_case_combines_list_with_tail() {
     assert_code_action!(
         COLLAPSE_NESTED_CASE,
-        r#"pub fn main(elems: List(List(Int))) {
+        r#"public fn main(elems: List(List(Int))) {
   case elems {
     [] -> 0
     [_, ..tail] ->
@@ -11185,7 +11185,7 @@ fn wibble() -> Nil
 fn merge_case_branch() {
     assert_code_action!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(n: Int) {
+        r#"public fn go(n: Int) {
   case n {
     1 -> todo
     2 -> todo
@@ -11200,7 +11200,7 @@ fn merge_case_branch() {
 fn merge_case_branch_with_todo_keeps_the_non_todo_body() {
     assert_code_action!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(n: Int) {
+        r#"public fn go(n: Int) {
   case n {
     1 -> todo
     2 -> n * 2
@@ -11216,7 +11216,7 @@ fn merge_case_branch_with_todo_keeps_the_non_todo_body() {
 fn merge_case_branch_with_todo_keeps_the_non_todo_body_1() {
     assert_code_action!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(n: Int) {
+        r#"public fn go(n: Int) {
   case n {
     1 -> todo
     2 -> todo
@@ -11232,7 +11232,7 @@ fn merge_case_branch_with_todo_keeps_the_non_todo_body_1() {
 fn merge_case_branch_with_todo_keeps_the_non_todo_body_2() {
     assert_code_action!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(n: Int) {
+        r#"public fn go(n: Int) {
   case n {
     1 -> n * 2
     2 -> todo
@@ -11248,7 +11248,7 @@ fn merge_case_branch_with_todo_keeps_the_non_todo_body_2() {
 fn merge_case_branch_with_complex_bodies_1() {
     assert_code_action!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(n: Int) {
+        r#"public fn go(n: Int) {
   case n {
     1 -> Ok("one or two")
     2 -> Ok("one or two")
@@ -11263,7 +11263,7 @@ fn merge_case_branch_with_complex_bodies_1() {
 fn merge_case_branch_with_complex_bodies_2() {
     assert_code_action!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(n: Int) {
+        r#"public fn go(n: Int) {
   case n {
     1 -> n
     2 -> n
@@ -11278,7 +11278,7 @@ fn merge_case_branch_with_complex_bodies_2() {
 fn merge_case_branch_with_complex_bodies_3() {
     assert_code_action!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(n: Int) {
+        r#"public fn go(n: Int) {
   case n {
     1 -> go(n - 1)
     2 -> go(n - 1)
@@ -11293,7 +11293,7 @@ fn merge_case_branch_with_complex_bodies_3() {
 fn merge_case_branch_with_complex_bodies_4() {
     assert_code_action!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(n: Int) {
+        r#"public fn go(n: Int) {
   case n {
     1 -> {
       let a = go(n - 1)
@@ -11314,7 +11314,7 @@ fn merge_case_branch_with_complex_bodies_4() {
 fn merge_case_branch_will_not_merge_branches_with_guards() {
     assert_no_code_actions!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(n: Int) {
+        r#"public fn go(n: Int) {
   case n {
     1 if True -> todo
     2 -> todo
@@ -11329,7 +11329,7 @@ fn merge_case_branch_will_not_merge_branches_with_guards() {
 fn merge_case_branch_will_not_merge_branches_defining_different_variables() {
     assert_no_code_actions!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(result: Result(Int, Int)) {
+        r#"public fn go(result: Result(Int, Int)) {
   case result {
     Ok(value) -> todo
     Error(error) -> todo
@@ -11344,7 +11344,7 @@ fn merge_case_branch_will_not_merge_branches_defining_different_variables() {
 fn merge_case_branch_can_merge_branches_defining_the_same_variables() {
     assert_code_action!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(result) {
+        r#"public fn go(result) {
   case result {
     [Ok(value), ..] -> todo
     [_, Error(value)] -> todo
@@ -11359,7 +11359,7 @@ fn merge_case_branch_can_merge_branches_defining_the_same_variables() {
 fn merge_case_branch_can_merge_multiple_branches() {
     assert_code_action!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(result) {
+        r#"public fn go(result) {
   case result {
     [_] -> 1
     [Ok(value), ..] -> todo
@@ -11377,7 +11377,7 @@ fn merge_case_branch_can_merge_multiple_branches() {
 fn merge_case_branch_does_not_pop_up_with_a_single_selected_branch() {
     assert_no_code_actions!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(result) {
+        r#"public fn go(result) {
   case result {
     [] -> todo
     _ -> 2
@@ -11391,7 +11391,7 @@ fn merge_case_branch_does_not_pop_up_with_a_single_selected_branch() {
 fn merge_case_branch_works_with_existing_alternative_patterns() {
     assert_code_action!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(result) {
+        r#"public fn go(result) {
   case result {
     [] | [_, _, ..]-> todo
     [_] -> todo
@@ -11406,7 +11406,7 @@ fn merge_case_branch_works_with_existing_alternative_patterns() {
 fn merge_case_branch_does_not_merge_branches_with_variables_with_same_name_and_different_types() {
     assert_no_code_actions!(
         MERGE_CASE_BRANCHES,
-        r#"pub fn go(result: Result(Int, String)) {
+        r#"public fn go(result: Result(Int, String)) {
   case result {
     Ok(one) -> todo
     Error(one) -> todo

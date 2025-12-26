@@ -1,10 +1,11 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\npub fn main() {\n  const x = 10\n  x\n}\n"
+expression: "\npublic fn main() {\n  const x = 10\n  x\n}\n"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
-pub fn main() {
+public fn main() {
   const x = 10
   x
 }
