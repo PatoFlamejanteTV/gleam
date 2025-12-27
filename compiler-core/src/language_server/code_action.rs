@@ -5719,7 +5719,7 @@ impl<'a> GenerateFunction<'a> {
 
         let return_type = printer.print_type(&return_type);
 
-        let publicity = if publicity.is_public() { "pub " } else { "" };
+        let publicity = if publicity.is_public() { "public " } else { "" };
 
         // Make sure we use the line number information of the module we are
         // editing, which might not be the module where the code action is

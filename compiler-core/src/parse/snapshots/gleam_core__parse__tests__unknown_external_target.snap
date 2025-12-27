@@ -1,11 +1,12 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\n@external(erl, \"one\", \"two\")\npub fn one(x: Int) -> Int {\n  todo\n}"
+expression: "\n@external(erl, \"one\", \"two\")\npublic fn one(x: Int) -> Int {\n  todo\n}"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
 @external(erl, "one", "two")
-pub fn one(x: Int) -> Int {
+public fn one(x: Int) -> Int {
   todo
 }
 

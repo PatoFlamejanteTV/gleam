@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn go(result) {\n  case result {\n    [Ok(value), ..] -> todo\n    [_, Error(value)] -> todo\n    _ -> todo\n  }\n}"
+expression: "public fn go(result) {\n  case result {\n    [Ok(value), ..] -> todo\n    [_, Error(value)] -> todo\n    _ -> todo\n  }\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn go(result) {
+public fn go(result) {
   case result {
     [Ok(value), ..] -> todo
      ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
@@ -15,7 +16,7 @@ pub fn go(result) {
 
 
 ----- AFTER ACTION
-pub fn go(result) {
+public fn go(result) {
   case result {
     [Ok(value), ..] | [_, Error(value)] -> todo
     _ -> todo

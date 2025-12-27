@@ -38,7 +38,7 @@ pub fn main() -> Nil
 #[test]
 fn anonymous_function_as_final_function_argument() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   some_function(123, 456, fn(x) {
     let y = x + 1
     y
@@ -51,7 +51,7 @@ fn anonymous_function_as_final_function_argument() {
 #[test]
 fn anonymous_function_with_single_line_body_as_final_function_argument() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   some_function(123, 456, fn(x) { x })
 }
 "#
@@ -61,7 +61,7 @@ fn anonymous_function_with_single_line_body_as_final_function_argument() {
 #[test]
 fn anonymous_function_with_multi_line_unbreakable_body_as_final_function_argument() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   some_function(123, 456, fn(x) {
     call_to_other_function(a, b, c, d, e, f, g, h)
   })
@@ -73,7 +73,7 @@ fn anonymous_function_with_multi_line_unbreakable_body_as_final_function_argumen
 #[test]
 fn anonymous_function_with_multi_line_breakable_body_as_final_function_argument() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   some_function(123, 456, fn(x) {
     call_to_other_function(a, b, c, d, e, f, g, { x + x })
   })
@@ -85,7 +85,7 @@ fn anonymous_function_with_multi_line_breakable_body_as_final_function_argument(
 #[test]
 fn anonymous_function_with_multi_line_long_breakable_body_as_final_function_argument() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   some_function(123, 456, fn(x) {
     call_to_other_function(a, b, c, d, e, f, g, case wibble {
       Wibble -> 1
@@ -100,7 +100,7 @@ fn anonymous_function_with_multi_line_long_breakable_body_as_final_function_argu
 #[test]
 fn function_call_as_final_function_argument_goes_on_its_own_line() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   some_function_with_a_long_name(
     123,
     456,
@@ -114,7 +114,7 @@ fn function_call_as_final_function_argument_goes_on_its_own_line() {
 #[test]
 fn tuple_as_final_function_argument() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   some_function(123, 456, #(
     "Here is a very long string which causes the formatter to wrap it",
   ))
@@ -126,7 +126,7 @@ fn tuple_as_final_function_argument() {
 #[test]
 fn list_as_final_function_argument() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   some_function(123, 456, [
     "Here is a very long string which causes the formatter to wrap it",
   ])
@@ -138,7 +138,7 @@ fn list_as_final_function_argument() {
 #[test]
 fn case_expression_as_final_function_argument() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   some_function(123, 456, case my_var {
     True -> True
     False -> False
@@ -151,7 +151,7 @@ fn case_expression_as_final_function_argument() {
 #[test]
 fn block_as_final_function_argument() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   some_function(123, 456, {
     let days = 7
     days * 24 * 60 * 60
@@ -164,7 +164,7 @@ fn block_as_final_function_argument() {
 #[test]
 fn when_all_arguments_are_too_long_each_one_is_on_its_own_line() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   some_function(
     variable_with_really_long_name,
     whoah_this_is_getting_out_of_hand,
@@ -178,7 +178,7 @@ fn when_all_arguments_are_too_long_each_one_is_on_its_own_line() {
 #[test]
 fn nested_breakable_lists_in_function_calls() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   html([attribute("lang", "en")], [
     head([attribute("wibble", "wobble")], [
       title([], [text("Hello this is some HTML")]),
@@ -193,7 +193,7 @@ fn nested_breakable_lists_in_function_calls() {
 #[test]
 fn nested_breakable_tuples_in_function_calls() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   html(#(attribute("lang", "en")), #(
     head(#(attribute("wibble", "wobble")), #(
       title(#(), #(text("Hello this is some HTML"))),
@@ -210,7 +210,7 @@ fn nested_breakable_tuples_in_function_calls() {
 #[test]
 fn only_last_argument_can_be_broken() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   tbd.workbook(for: "my_project")
   |> task(
     doc: "Run the project tests",
@@ -223,7 +223,7 @@ fn only_last_argument_can_be_broken() {
     );
 
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   Theme(
     flag: styler([32]),
     heading: styler([1, 95]),
@@ -242,7 +242,7 @@ fn only_last_argument_can_be_broken() {
 #[test]
 fn function_that_is_a_little_over_the_limit() {
     assert_format!(
-        r#"pub fn handle_request(
+        r#"public fn handle_request(
   handler: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,
 ) -> Nil {
   todo
@@ -255,7 +255,7 @@ fn function_that_is_a_little_over_the_limit() {
 #[test]
 fn expr_function_as_last_argument() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   Builder(
     accumulator: "",
     update: fn(accum, val) { accum <> val },
@@ -268,7 +268,7 @@ fn expr_function_as_last_argument() {
     // We want to make sure that, if it goes over the limit NOT with its
     // arguments' list the body is still the first thing that gets split.
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   Builder(accumulator: "", update: fn(accum, val) { accum }, final: fn(accum) {
     accum
   })
@@ -280,7 +280,7 @@ fn expr_function_as_last_argument() {
 #[test]
 fn comment_at_start_of_inline_function_body() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let add = fn(x: Int, y: Int) {
     // This is a comment
     x + y
@@ -293,7 +293,7 @@ fn comment_at_start_of_inline_function_body() {
 #[test]
 fn comment_at_start_of_top_level_function_body() {
     assert_format!(
-        r#"pub fn add(x: Int, y: Int) {
+        r#"public fn add(x: Int, y: Int) {
   // This is a comment
   x + y
 }
@@ -304,7 +304,7 @@ fn comment_at_start_of_top_level_function_body() {
 #[test]
 fn comment_at_end_of_inline_function_args() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let add = fn(
     x: Int,
     y: Int,
@@ -320,7 +320,7 @@ fn comment_at_end_of_inline_function_args() {
 #[test]
 fn comment_middle_of_inline_function_body() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let add = fn(x: Int, y: Int, z: Int) {
     let a = x + y
     // This is a comment
@@ -335,14 +335,14 @@ fn comment_middle_of_inline_function_body() {
 #[test]
 fn comment_in_tuple_return_type() {
     assert_format_rewrite!(
-        r#"pub fn main() -> #(
+        r#"public fn main() -> #(
   // This is a string
   String, // This is an awesome string
 ) {
   todo
 }
 "#,
-        r#"pub fn main() -> #(
+        r#"public fn main() -> #(
   String,
   // This is a string
   // This is an awesome string

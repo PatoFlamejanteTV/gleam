@@ -3,7 +3,7 @@ use crate::assert_format;
 #[test]
 fn case_with_two_long_subjects() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   case
     wibble(one_long_argument, something_else),
     wobble(another_argument, this_is_long)
@@ -18,7 +18,7 @@ fn case_with_two_long_subjects() {
 #[test]
 fn multiple_patterns_get_split_one_on_each_line() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   case wibble, wobble, wubble {
     Wibble(one_thing, something_else, wibble),
       Wobble(
@@ -37,7 +37,7 @@ fn multiple_patterns_get_split_one_on_each_line() {
 #[test]
 fn multiple_patterns_with_guard_get_split_one_on_each_line() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   case wibble, wobble, wubble {
     Wibble(one_thing, something_else, wibble),
       Wobble(this_will_go_over_the_line_limit, wobble),
@@ -53,7 +53,7 @@ fn multiple_patterns_with_guard_get_split_one_on_each_line() {
 #[test]
 fn multiple_patterns_with_long_guard_get_split_one_on_each_line() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   case wibble, wobble, wubble {
     Wibble(one_thing, something_else, wibble),
       Wobble(this_will_go_over_the_line_limit, wobble),
@@ -71,7 +71,7 @@ fn multiple_patterns_with_long_guard_get_split_one_on_each_line() {
 #[test]
 fn multiple_patterns_and_alternative_patterns_mixed_together() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   case wibble, wobble, wubble {
     Wibble(one_thing, something_else, wibble),
       Wobble(this_will_go_over_the_line_limit, wobble),
@@ -93,7 +93,7 @@ fn multiple_patterns_and_alternative_patterns_mixed_together() {
 #[test]
 fn case_pattern_split_on_multiple_lines_is_not_needlessly_nested() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   case thing {
     CannotSaveNewSnapshot(
       reason: reason,

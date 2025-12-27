@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n    use <- wibble([1, 2, 3])\n    todo\n}"
+expression: "public fn main() {\n    use <- wibble([1, 2, 3])\n    todo\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
     use <- wibble([1, 2, 3])
                   ↑         
     todo
@@ -11,7 +12,7 @@ pub fn main() {
 
 
 ----- AFTER ACTION
-pub fn main() {
+public fn main() {
     let ints = [1, 2, 3]
     use <- wibble(ints)
     todo

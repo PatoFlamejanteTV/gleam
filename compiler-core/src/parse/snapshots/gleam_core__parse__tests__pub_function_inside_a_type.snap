@@ -1,11 +1,12 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\ntype Wibble {\n  pub fn wobble() {}\n}\n"
+expression: "\ntype Wibble {\n  public fn wobble() {}\n}\n"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
 type Wibble {
-  pub fn wobble() {}
+  public fn wobble() {}
 }
 
 
@@ -13,10 +14,10 @@ type Wibble {
 error: Syntax error
   ┌─ /src/parse/error.gleam:3:3
   │
-3 │   pub fn wobble() {}
-  │   ^^^ I was not expecting this
+3 │   public fn wobble() {}
+  │   ^^^^^^ I was not expecting this
 
-Found the keyword `pub`, expected one of: 
+Found the keyword `public`, expected one of:
 - `}`
 - a record constructor
 Hint: Gleam is not an object oriented programming language so

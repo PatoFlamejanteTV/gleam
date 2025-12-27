@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n  [#(\"a\", 0), #(\"b\", 1), #(\"a\", 2)]\n  |> key_filter(\"a\")\n}"
+expression: "public fn main() {\n  [#(\"a\", 0), #(\"b\", 1), #(\"a\", 2)]\n  |> key_filter(\"a\")\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
   [#("a", 0), #("b", 1), #("a", 2)]
    ▔↑                              
   |> key_filter("a")
@@ -13,7 +14,7 @@ pub fn main() {
 ----- AFTER ACTION
 const value = #("a", 0)
 
-pub fn main() {
+public fn main() {
   [value, #("b", 1), #("a", 2)]
   |> key_filter("a")
 }

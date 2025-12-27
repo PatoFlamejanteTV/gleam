@@ -13,7 +13,7 @@ pub const pi = 3.14
 #[test]
 fn const_record_update_simple() {
     assert_format!(
-        r#"pub type Counter {
+        r#"public type Counter {
   Counter(a: Int, b: Int)
 }
 
@@ -27,7 +27,7 @@ pub const c2 = Counter(..c, a: 1, b: 2)
 #[test]
 fn const_record_update_long() {
     assert_format!(
-        r#"pub type Counter {
+        r#"public type Counter {
   Counter(loooooooooooooooooooooooooooooooooooooooooooooooooooooooooooong: Int)
 }
 
@@ -44,7 +44,7 @@ pub const c2 = Counter(
 #[test]
 fn const_record_update_with_module() {
     assert_format!(
-        r#"pub type Counter {
+        r#"public type Counter {
   Counter(a: Int, b: Int)
 }
 

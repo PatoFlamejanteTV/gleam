@@ -1,10 +1,11 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\n    pub fn main() {\n        let a = 'example'\n      }\n    "
+expression: "\n    public fn main() {\n        let a = 'example'\n      }\n    "
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
-    pub fn main() {
+    public fn main() {
         let a = 'example'
       }
     

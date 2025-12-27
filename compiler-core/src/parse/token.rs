@@ -337,7 +337,7 @@ impl fmt::Display for Token {
             Token::Pipe => "|>",
             Token::Plus => "+",
             Token::PlusDot => "+.",
-            Token::Pub => "pub",
+            Token::Pub => "public",
             Token::RArrow => "->",
             Token::RightBrace => "}",
             Token::RightParen => ")",

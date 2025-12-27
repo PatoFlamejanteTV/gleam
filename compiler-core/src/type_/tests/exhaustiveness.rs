@@ -1478,7 +1478,7 @@ pub fn main() {
 #[test]
 fn unreachable_string_pattern_after_prefix() {
     assert_warning!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let string = ""
   case string {
     "wib" <> rest -> rest
@@ -1492,7 +1492,7 @@ fn unreachable_string_pattern_after_prefix() {
 #[test]
 fn reachable_string_pattern_after_prefix() {
     assert_no_warnings!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let string = ""
   case string {
     "wib" <> rest if True -> rest
@@ -1506,7 +1506,7 @@ fn reachable_string_pattern_after_prefix() {
 #[test]
 fn reachable_string_pattern_after_prefix_1() {
     assert_no_warnings!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let string = ""
   case string {
     "wibble" <> rest -> rest
@@ -1520,7 +1520,7 @@ fn reachable_string_pattern_after_prefix_1() {
 #[test]
 fn unreachable_prefix_pattern_after_prefix() {
     assert_warning!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let string = ""
   case string {
     "wib" <> rest -> rest
@@ -1534,7 +1534,7 @@ fn unreachable_prefix_pattern_after_prefix() {
 #[test]
 fn reachable_prefix_pattern_after_prefix() {
     assert_no_warnings!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let string = ""
   case string {
     "wib" <> rest if True -> rest
@@ -1548,7 +1548,7 @@ fn reachable_prefix_pattern_after_prefix() {
 #[test]
 fn reachable_prefix_pattern_after_prefix_1() {
     assert_no_warnings!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let string = ""
   case string {
     "wibble" <> rest -> rest
@@ -1562,7 +1562,7 @@ fn reachable_prefix_pattern_after_prefix_1() {
 #[test]
 fn multiple_unreachable_prefix_patterns() {
     assert_warning!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let string = ""
   case string {
     "wib" <> rest -> rest
@@ -1577,7 +1577,7 @@ fn multiple_unreachable_prefix_patterns() {
 #[test]
 fn multiple_unreachable_prefix_patterns_1() {
     assert_warning!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let string = ""
   case string {
     "wib" <> rest if True -> rest
@@ -1592,7 +1592,7 @@ fn multiple_unreachable_prefix_patterns_1() {
 #[test]
 fn bit_array_bits_catches_everything() {
     assert_warning!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let bit_array = <<>>
   case bit_array {
     <<_:bits>> -> 1
@@ -1606,7 +1606,7 @@ fn bit_array_bits_catches_everything() {
 #[test]
 fn bit_array_bytes_needs_catch_all() {
     assert_module_error!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let bit_array = <<>>
   case bit_array {
     <<_:bytes>> -> 1
@@ -1618,7 +1618,7 @@ fn bit_array_bytes_needs_catch_all() {
 #[test]
 fn bit_array_overlapping_patterns_are_redundant() {
     assert_warning!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let bit_array = <<>>
   case bit_array {
     <<1, a:size(16)>> -> a
@@ -1632,7 +1632,7 @@ fn bit_array_overlapping_patterns_are_redundant() {
 #[test]
 fn bit_array_similar_overlapping_patterns_are_not_redundant() {
     assert_no_warnings!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let bit_array = <<>>
   case bit_array {
     <<1, a:size(16)>> -> a
@@ -1646,7 +1646,7 @@ fn bit_array_similar_overlapping_patterns_are_not_redundant() {
 #[test]
 fn bit_array_overlapping_redundant_patterns_with_variable_size() {
     assert_warning!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let bit_array = <<>>
   let len = 3
   case bit_array {
@@ -1661,7 +1661,7 @@ fn bit_array_overlapping_redundant_patterns_with_variable_size() {
 #[test]
 fn bit_array_overlapping_redundant_patterns_with_variable_size_2() {
     assert_warning!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let bit_array = <<>>
   case bit_array {
     <<len, _:size(len)-unit(3)>> -> 1
@@ -1675,7 +1675,7 @@ fn bit_array_overlapping_redundant_patterns_with_variable_size_2() {
 #[test]
 fn bit_array_overlapping_patterns_with_variable_size_not_redundant() {
     assert_no_warnings!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let bit_array = <<>>
   case bit_array {
     <<len, 1:size(len)-unit(3)>> -> 1
@@ -1689,7 +1689,7 @@ fn bit_array_overlapping_patterns_with_variable_size_not_redundant() {
 #[test]
 fn bit_array_patterns_with_different_length_with_same_name_are_not_redundant() {
     assert_no_warnings!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let bit_array = <<>>
   let len = 10
   case bit_array {
@@ -1706,7 +1706,7 @@ fn bit_array_patterns_with_different_length_with_same_name_are_not_redundant() {
 #[test]
 fn bit_array_patterns_with_different_length_with_same_name_are_not_redundant_1() {
     assert_no_warnings!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let bit_array = <<>>
   let len = 10
   case bit_array {
@@ -1723,7 +1723,7 @@ fn bit_array_patterns_with_different_length_with_same_name_are_not_redundant_1()
 #[test]
 fn bit_array_patterns_with_different_length_with_same_name_are_not_redundant_2() {
     assert_no_warnings!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let bit_array = <<>>
   case bit_array {
     <<_, len, _:size(len)>> -> 1
@@ -1739,7 +1739,7 @@ fn bit_array_patterns_with_different_length_with_same_name_are_not_redundant_2()
 #[test]
 fn same_catch_all_bytes_are_redundant() {
     assert_warning!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let bit_array = <<>>
   case bit_array {
     <<_:bytes>> -> <<>>
@@ -1753,7 +1753,7 @@ fn same_catch_all_bytes_are_redundant() {
 #[test]
 fn different_catch_all_bytes_are_not_redundant() {
     assert_no_warnings!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let bit_array = <<>>
   case bit_array {
     <<_, _:bytes>> -> <<>>

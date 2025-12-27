@@ -611,8 +611,8 @@ utf16_codepoint, utf32_codepoint, signed, unsigned, big, little, native, size, u
                 field_type,
             } => {
                 let (accessor, opaque) = match *public {
-                    true if *opaque => ("pub ", "opaque "),
-                    true => ("pub ", ""),
+                    true if *opaque => ("public ", "opaque "),
+                    true => ("public ", ""),
                     false => ("", ""),
                 };
 

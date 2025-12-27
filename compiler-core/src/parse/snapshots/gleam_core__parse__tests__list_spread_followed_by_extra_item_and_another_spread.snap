@@ -1,10 +1,11 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\npub fn main() -> Nil {\n  let xs = [1, 2, 3]\n  let ys = [5, 6, 7]\n  [..xs, 4, ..ys]\n}\n"
+expression: "\npublic fn main() -> Nil {\n  let xs = [1, 2, 3]\n  let ys = [5, 6, 7]\n  [..xs, 4, ..ys]\n}\n"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
-pub fn main() -> Nil {
+public fn main() -> Nil {
   let xs = [1, 2, 3]
   let ys = [5, 6, 7]
   [..xs, 4, ..ys]

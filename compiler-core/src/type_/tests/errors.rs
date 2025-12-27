@@ -1574,7 +1574,7 @@ fn main(y: List(something)) {
 fn wrong_type_ret() {
     // See https://github.com/gleam-lang/gleam/pull/1407#issuecomment-1001162876
     assert_module_error!(
-        r#"pub fn main(x: something) -> Int {
+        r#"public fn main(x: something) -> Int {
   let y = x
   y
 }"#
@@ -3354,7 +3354,7 @@ fn type_used_as_a_constructor_with_more_arguments() {
 #[test]
 fn remembering_record_field_when_type_checking_fails() {
     assert_module_error!(
-        r#"pub type Wibble {
+        r#"public type Wibble {
   Wibble(x: Int, f: fn(Wobble) -> Int)
 }
 

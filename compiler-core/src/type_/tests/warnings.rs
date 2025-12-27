@@ -2792,12 +2792,12 @@ pub fn go() {
 
 #[test]
 fn javascript_unsafe_int_in_const() {
-    assert_js_warning!(r#"pub const i = 9_007_199_254_740_992"#);
+    assert_js_warning!(r#"public const i = 9_007_199_254_740_992"#);
 }
 
 #[test]
 fn javascript_unsafe_int_in_const_tuple() {
-    assert_js_warning!(r#"pub const i = #(9_007_199_254_740_992)"#);
+    assert_js_warning!(r#"public const i = #(9_007_199_254_740_992)"#);
 }
 
 #[test]

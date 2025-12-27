@@ -3,7 +3,7 @@ use crate::assert_erl;
 #[test]
 fn bit_array() {
     assert_erl!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let a = 1
   let simple = <<1, a>>
   let complex = <<4:int-big, 5.0:little-float, 6:native-int>>
@@ -19,7 +19,7 @@ fn bit_array() {
 #[test]
 fn bit_array_float() {
     assert_erl!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let b = 16
   let floats = <<1.0:16-float, 5.0:float-32, 6.0:float-64-little, 1.0:float-size(b)>>
   let assert <<1.0:16-float, 5.0:float-32, 6.0:float-64-little, 1.0:float-size(b)>> = floats
@@ -30,7 +30,7 @@ fn bit_array_float() {
 #[test]
 fn bit_array1() {
     assert_erl!(
-        r#"pub fn x() { 2 }
+        r#"public fn x() { 2 }
 pub fn main() {
   let a = -1
   let b = <<a:unit(2)-size(a * 2), a:size(3 + x())-unit(1)>>
@@ -44,7 +44,7 @@ pub fn main() {
 #[test]
 fn bit_array2() {
     assert_erl!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let a = 1
   let assert <<b, 1>> = <<1, a>>
   b
@@ -56,7 +56,7 @@ fn bit_array2() {
 #[test]
 fn bit_array3() {
     assert_erl!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let a = <<"test":utf8>>
   let assert <<b:utf8_codepoint, "st":utf8>> = a
   b
@@ -122,7 +122,7 @@ pub fn bit_array_discard(x) -> Bool {
 #[test]
 fn bit_array_declare_and_use_var() {
     assert_erl!(
-        r#"pub fn go(x) {
+        r#"public fn go(x) {
   let assert <<name_size:8, name:bytes-size(name_size)>> = x
   name
 }"#

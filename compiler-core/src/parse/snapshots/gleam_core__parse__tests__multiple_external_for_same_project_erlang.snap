@@ -1,12 +1,13 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\n@external(erlang, \"one\", \"two\")\n@external(erlang, \"three\", \"four\")\npub fn one(x: Int) -> Int {\n  todo\n}\n"
+expression: "\n@external(erlang, \"one\", \"two\")\n@external(erlang, \"three\", \"four\")\npublic fn one(x: Int) -> Int {\n  todo\n}\n"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
 @external(erlang, "one", "two")
 @external(erlang, "three", "four")
-pub fn one(x: Int) -> Int {
+public fn one(x: Int) -> Int {
   todo
 }
 

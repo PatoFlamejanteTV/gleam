@@ -1,10 +1,11 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\npub opaque type User {\n    name\n}\n"
+expression: "\npublic opaque type User {\n    name\n}\n"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
-pub opaque type User {
+public opaque type User {
     name
 }
 
@@ -18,7 +19,7 @@ error: Syntax error
 
 Each custom type variant must have a constructor:
 
-pub opaque type User {
+public opaque type User {
   User(
     name: Type,
   )

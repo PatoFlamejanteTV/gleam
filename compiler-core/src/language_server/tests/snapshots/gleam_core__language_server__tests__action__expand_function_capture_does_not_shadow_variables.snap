@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n  let value = 1\n  let value_2 = 2\n  wibble(value, _, value_2)\n}"
+expression: "public fn main() {\n  let value = 1\n  let value_2 = 2\n  wibble(value, _, value_2)\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
   let value = 1
   let value_2 = 2
   wibble(value, _, value_2)
@@ -12,7 +13,7 @@ pub fn main() {
 
 
 ----- AFTER ACTION
-pub fn main() {
+public fn main() {
   let value = 1
   let value_2 = 2
   fn(value_3) { wibble(value, value_3, value_2) }

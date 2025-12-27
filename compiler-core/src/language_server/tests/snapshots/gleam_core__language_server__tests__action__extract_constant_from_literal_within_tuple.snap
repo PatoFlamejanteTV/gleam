@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n  let c = #(0.333334, todo)\n}"
+expression: "public fn main() {\n  let c = #(0.333334, todo)\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
   let c = #(0.333334, todo)
             ▔▔▔▔▔▔▔↑       
 }
@@ -12,6 +13,6 @@ pub fn main() {
 ----- AFTER ACTION
 const float = 0.333334
 
-pub fn main() {
+public fn main() {
   let c = #(float, todo)
 }

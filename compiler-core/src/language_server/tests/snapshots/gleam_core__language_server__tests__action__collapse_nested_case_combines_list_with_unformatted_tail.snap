@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main(elems: List(String)) {\n  case elems {\n    [first, .. rest_of_list] ->\n      case rest_of_list {\n        [] -> 0\n        [\"first\"] -> 1\n        [_, \"second\"] -> 2\n        [_, \"second\", \"third\", _] -> 4\n        _ -> -1\n      }\n    _ -> -1\n  }\n}"
+expression: "public fn main(elems: List(String)) {\n  case elems {\n    [first, .. rest_of_list] ->\n      case rest_of_list {\n        [] -> 0\n        [\"first\"] -> 1\n        [_, \"second\"] -> 2\n        [_, \"second\", \"third\", _] -> 4\n        _ -> -1\n      }\n    _ -> -1\n  }\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main(elems: List(String)) {
+public fn main(elems: List(String)) {
   case elems {
     [first, .. rest_of_list] ->
                ↑               
@@ -20,7 +21,7 @@ pub fn main(elems: List(String)) {
 
 
 ----- AFTER ACTION
-pub fn main(elems: List(String)) {
+public fn main(elems: List(String)) {
   case elems {
     [first, ] -> 0
     [first, "first"] -> 1

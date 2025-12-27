@@ -1,12 +1,13 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\n@internal\n@internal\npub fn main() -> Nil {\n  Nil\n}\n"
+expression: "\n@internal\n@internal\npublic fn main() -> Nil {\n  Nil\n}\n"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
 @internal
 @internal
-pub fn main() -> Nil {
+public fn main() -> Nil {
   Nil
 }
 
