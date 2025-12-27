@@ -1,6 +1,7 @@
 ---
 source: compiler-core/src/language_server/tests/definition.rs
 expression: output
+snapshot_kind: text
 ---
 Jumping to type definition
 
@@ -14,16 +15,4 @@ pub fn main() {
   let x = Wibble
   x
   ↑
-}
-
------ Jumped to `src/app.gleam`
-
-pub type Wibble {
-↑▔▔▔▔▔▔▔▔▔▔▔▔▔▔  
-  Wibble
-}
-
-pub fn main() {
-  let x = Wibble
-  x
 }

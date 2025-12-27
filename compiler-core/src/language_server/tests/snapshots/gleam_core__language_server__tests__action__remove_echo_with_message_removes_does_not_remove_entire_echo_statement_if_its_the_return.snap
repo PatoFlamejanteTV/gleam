@@ -1,15 +1,16 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n  echo 1 as \"message\"\n}"
+expression: "public fn main() {\n  echo 1 as \"message\"\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
   echo 1 as "message"
   ↑                  
 }
 
 
 ----- AFTER ACTION
-pub fn main() {
+public fn main() {
   1
 }

@@ -1,15 +1,16 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n  \"wibble wobble woo woo\"\n}"
+expression: "public fn main() {\n  \"wibble wobble woo woo\"\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
   "wibble wobble woo woo"
           ▔▔▔▔▔▔▔▔▔▔↑    
 }
 
 
 ----- AFTER ACTION
-pub fn main() {
+public fn main() {
   "wibble wobble woo" <> todo <> " woo"
 }

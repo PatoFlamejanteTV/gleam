@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n  let c = [\"constant\", todo]\n}"
+expression: "public fn main() {\n  let c = [\"constant\", todo]\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
   let c = ["constant", todo]
            ↑                
 }
@@ -12,6 +13,6 @@ pub fn main() {
 ----- AFTER ACTION
 const string = "constant"
 
-pub fn main() {
+public fn main() {
   let c = [string, todo]
 }

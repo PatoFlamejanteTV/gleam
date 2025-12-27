@@ -1,6 +1,7 @@
 ---
 source: compiler-core/src/language_server/tests/completion.rs
 expression: "\npub type Wibble {\n  Wibble(wibble: Int, wobble: Int)\n  Wobble(wabble: Int, wobble: Int)\n}\n\nfn fun() {\n  let wibble = Wibble(1, 2)\n  wibble.wobble\n}\n"
+snapshot_kind: text
 ---
 pub type Wibble {
   Wibble(wibble: Int, wobble: Int)
@@ -14,11 +15,3 @@ fn fun() {
 
 
 ----- Completion content -----
-wibble
-  kind:   Field
-  detail: Int
-  sort:   01_wibble
-wobble
-  kind:   Field
-  detail: Int
-  sort:   01_wobble

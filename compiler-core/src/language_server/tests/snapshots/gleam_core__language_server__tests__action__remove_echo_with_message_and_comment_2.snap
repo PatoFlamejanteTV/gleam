@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n  echo 1 + 2 as\n    // Hello!\n    \"message\"\n}"
+expression: "public fn main() {\n  echo 1 + 2 as\n    // Hello!\n    \"message\"\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
   echo 1 + 2 as
   ↑            
     // Hello!
@@ -12,6 +13,6 @@ pub fn main() {
 
 
 ----- AFTER ACTION
-pub fn main() {
+public fn main() {
   1 + 2
 }

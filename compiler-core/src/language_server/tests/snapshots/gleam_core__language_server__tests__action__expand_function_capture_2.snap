@@ -1,15 +1,16 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n  wibble(1, _)\n}"
+expression: "public fn main() {\n  wibble(1, _)\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
   wibble(1, _)
   ↑           
 }
 
 
 ----- AFTER ACTION
-pub fn main() {
+public fn main() {
   fn(value) { wibble(1, value) }
 }

@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main(result) {\n  case result {\n    Ok(value) -> value + 1\n    Error(_) -> panic\n  }\n}"
+expression: "public fn main(result) {\n  case result {\n    Ok(value) -> value + 1\n    Error(_) -> panic\n  }\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main(result) {
+public fn main(result) {
   case result {
     Ok(value) -> value + 1
                          ↑
@@ -15,7 +16,7 @@ pub fn main(result) {
 ----- AFTER ACTION
 const int = 1
 
-pub fn main(result) {
+public fn main(result) {
   case result {
     Ok(value) -> value + int
     Error(_) -> panic

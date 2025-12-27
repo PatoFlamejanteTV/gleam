@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main(result) {\n  let [wibble] = {\n    let Ok(wobble) = {\n      result\n    }\n    [wobble]\n  }\n}"
+expression: "public fn main(result) {\n  let [wibble] = {\n    let Ok(wobble) = {\n      result\n    }\n    [wobble]\n  }\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main(result) {
+public fn main(result) {
   let [wibble] = {
   ▔▔▔▔▔▔▔▔▔▔▔↑    
     let Ok(wobble) = {
@@ -15,7 +16,7 @@ pub fn main(result) {
 
 
 ----- AFTER ACTION
-pub fn main(result) {
+public fn main(result) {
   let wibble = case {
     let Ok(wobble) = {
       result

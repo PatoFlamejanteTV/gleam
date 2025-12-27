@@ -1,6 +1,7 @@
 ---
 source: compiler-core/src/language_server/tests/definition.rs
 expression: output
+snapshot_kind: text
 ---
 Jumping to type definition
 
@@ -14,7 +15,3 @@ pub fn main() {
 }
 
 pub fn use_wibble(wibble: Wibble) { todo }
-
------ Jumped to `src/wibble.gleam`
-pub type Wibble
-↑▔▔▔▔▔▔▔▔▔▔▔▔▔▔

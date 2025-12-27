@@ -989,7 +989,7 @@ pub fn main() {
         TestProject::for_source(src)
             .add_hex_module("option", "")
             .add_hex_module("result", ""),
-        find_position_of("import").select_until(find_position_of("pub")),
+        find_position_of("import").select_until(find_position_of("public")),
     );
 }
 
@@ -1009,7 +1009,7 @@ pub fn main() {
         TestProject::for_source(src)
             .add_hex_module("result", "pub fn is_ok() {}")
             .add_hex_module("option", ""),
-        find_position_of("// test").select_until(find_position_of("pub")),
+        find_position_of("// test").select_until(find_position_of("public")),
     );
 }
 
@@ -1029,7 +1029,7 @@ pub fn main() {
         TestProject::for_source(src)
             .add_hex_module("result", "pub fn is_ok() {}")
             .add_hex_module("option", ""),
-        find_position_of("// test").select_until(find_position_of("pub")),
+        find_position_of("// test").select_until(find_position_of("public")),
     );
 }
 
@@ -1049,7 +1049,7 @@ pub fn main() {
         TestProject::for_source(src)
             .add_hex_module("result", "pub fn is_ok() {}")
             .add_hex_module("option", ""),
-        find_position_of("// test").select_until(find_position_of("pub")),
+        find_position_of("// test").select_until(find_position_of("public")),
     );
 }
 
@@ -1076,7 +1076,7 @@ pub type Unused
 pub type Used
 "
         ),
-        find_position_of("// test").select_until(find_position_of("pub")),
+        find_position_of("// test").select_until(find_position_of("public")),
     );
 }
 
@@ -1102,7 +1102,7 @@ pub type Unused
 pub type Used
 "
         ),
-        find_position_of("// test").select_until(find_position_of("pub")),
+        find_position_of("// test").select_until(find_position_of("public")),
     );
 }
 
@@ -1128,7 +1128,7 @@ pub type Unused
 pub type Used
 "
         ),
-        find_position_of("// test").select_until(find_position_of("pub")),
+        find_position_of("// test").select_until(find_position_of("public")),
     );
 }
 
@@ -1809,7 +1809,7 @@ pub fn main() {
 }
 // end
 ",
-        find_position_of("pub").select_until(find_position_of("// end")),
+        find_position_of("public").select_until(find_position_of("// end")),
     );
 }
 
