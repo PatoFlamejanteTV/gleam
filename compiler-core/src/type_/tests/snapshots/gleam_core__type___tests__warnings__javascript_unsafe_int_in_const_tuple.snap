@@ -1,17 +1,16 @@
 ---
 source: compiler-core/src/type_/tests/warnings.rs
-expression: "public const i = #(9_007_199_254_740_992)"
-snapshot_kind: text
+expression: "pub const i = #(9_007_199_254_740_992)"
 ---
 ----- SOURCE CODE
-public const i = #(9_007_199_254_740_992)
+pub const i = #(9_007_199_254_740_992)
 
 ----- WARNING
 warning: Int is outside JavaScript's safe integer range
-  ┌─ /src/warning/wrn.gleam:1:20
+  ┌─ /src/warning/wrn.gleam:1:17
   │
-1 │ public const i = #(9_007_199_254_740_992)
-  │                    ^^^^^^^^^^^^^^^^^^^^^ This is not a safe integer value on JavaScript
+1 │ pub const i = #(9_007_199_254_740_992)
+  │                 ^^^^^^^^^^^^^^^^^^^^^ This is not a safe integer value on JavaScript
 
 This integer value is too large to be represented accurately by
 JavaScript's number type. To avoid this warning integer values must be in

@@ -1,17 +1,16 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn main() {\n  let assert \"_\" <> thing = \"_Hello\"\n}"
-snapshot_kind: text
+expression: "pub fn main() {\n  let assert \"_\" <> thing = \"_Hello\"\n}"
 ---
 ----- BEFORE ACTION
-public fn main() {
+pub fn main() {
   let assert "_" <> thing = "_Hello"
               ↑                     
 }
 
 
 ----- AFTER ACTION
-public fn main() {
+pub fn main() {
   let thing = case "_Hello" {
     "_" <> thing -> thing
     _ -> panic

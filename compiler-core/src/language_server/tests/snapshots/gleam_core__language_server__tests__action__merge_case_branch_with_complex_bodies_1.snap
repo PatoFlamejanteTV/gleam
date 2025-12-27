@@ -1,10 +1,9 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn go(n: Int) {\n  case n {\n    1 -> Ok(\"one or two\")\n    2 -> Ok(\"one or two\")\n    _ -> Error(\"neither one or two\")\n  }\n  }"
-snapshot_kind: text
+expression: "pub fn go(n: Int) {\n  case n {\n    1 -> Ok(\"one or two\")\n    2 -> Ok(\"one or two\")\n    _ -> Error(\"neither one or two\")\n  }\n  }"
 ---
 ----- BEFORE ACTION
-public fn go(n: Int) {
+pub fn go(n: Int) {
   case n {
     1 -> Ok("one or two")
     ▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔
@@ -16,7 +15,7 @@ public fn go(n: Int) {
 
 
 ----- AFTER ACTION
-public fn go(n: Int) {
+pub fn go(n: Int) {
   case n {
     1 | 2 -> Ok("one or two")
     _ -> Error("neither one or two")

@@ -1,10 +1,9 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn main() {\n  let fahrenheit = {\n    let degrees = 64 + 32\n    degrees\n  }\n}"
-snapshot_kind: text
+expression: "pub fn main() {\n  let fahrenheit = {\n    let degrees = 64 + 32\n    degrees\n  }\n}"
 ---
 ----- BEFORE ACTION
-public fn main() {
+pub fn main() {
   let fahrenheit = {
     let degrees = 64 + 32
                        ↑ 
@@ -16,7 +15,7 @@ public fn main() {
 ----- AFTER ACTION
 const int = 32
 
-public fn main() {
+pub fn main() {
   let fahrenheit = {
     let degrees = 64 + int
     degrees

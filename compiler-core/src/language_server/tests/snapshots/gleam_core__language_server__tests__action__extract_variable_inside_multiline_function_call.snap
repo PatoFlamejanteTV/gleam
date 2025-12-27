@@ -1,10 +1,9 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn main() {\n  list.map(\n    [1, 2, 3],\n    int.add(1, _),\n  )\n}"
-snapshot_kind: text
+expression: "pub fn main() {\n  list.map(\n    [1, 2, 3],\n    int.add(1, _),\n  )\n}"
 ---
 ----- BEFORE ACTION
-public fn main() {
+pub fn main() {
   list.map(
     [1, 2, 3],
     ↑         
@@ -14,7 +13,7 @@ public fn main() {
 
 
 ----- AFTER ACTION
-public fn main() {
+pub fn main() {
   let ints = [1, 2, 3]
   list.map(
     ints,

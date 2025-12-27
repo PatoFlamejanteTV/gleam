@@ -1,10 +1,9 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn main() {\n  echo 1 as \"message\"\n  Nil\n}"
-snapshot_kind: text
+expression: "pub fn main() {\n  echo 1 as \"message\"\n  Nil\n}"
 ---
 ----- BEFORE ACTION
-public fn main() {
+pub fn main() {
   echo 1 as "message"
   ↑                  
   Nil
@@ -12,6 +11,6 @@ public fn main() {
 
 
 ----- AFTER ACTION
-public fn main() {
+pub fn main() {
   Nil
 }

@@ -1,7 +1,6 @@
 ---
 source: compiler-core/src/language_server/tests/definition.rs
 expression: output
-snapshot_kind: text
 ---
 Jumping to type definition
 
@@ -15,3 +14,17 @@ pub fn main() {
   let a: #(Box(Wibble), Wobble) = todo
   ↑                                   
 }
+
+----- Jumped to `dep/src/box.gleam`
+pub type Box(a) { Box(a) }
+↑▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+
+
+----- Jumped to `dep/src/wibble.gleam`
+pub type Wibble { Wibble }
+↑▔▔▔▔▔▔▔▔▔▔▔▔▔▔
+
+
+----- Jumped to `dep/src/wobble.gleam`
+pub type Wobble { Wobble }
+↑▔▔▔▔▔▔▔▔▔▔▔▔▔▔

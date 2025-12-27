@@ -1,10 +1,9 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn main() {\n  {\n    todo\n    wibble([1, 2, 3])\n    todo\n  }\n}"
-snapshot_kind: text
+expression: "pub fn main() {\n  {\n    todo\n    wibble([1, 2, 3])\n    todo\n  }\n}"
 ---
 ----- BEFORE ACTION
-public fn main() {
+pub fn main() {
   {
     todo
     wibble([1, 2, 3])
@@ -15,7 +14,7 @@ public fn main() {
 
 
 ----- AFTER ACTION
-public fn main() {
+pub fn main() {
   {
     todo
     let ints = [1, 2, 3]

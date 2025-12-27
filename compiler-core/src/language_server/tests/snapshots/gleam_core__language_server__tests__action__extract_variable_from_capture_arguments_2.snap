@@ -1,17 +1,16 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn main() {\n  int.add(11, _)\n}"
-snapshot_kind: text
+expression: "pub fn main() {\n  int.add(11, _)\n}"
 ---
 ----- BEFORE ACTION
-public fn main() {
+pub fn main() {
   int.add(11, _)
           ↑     
 }
 
 
 ----- AFTER ACTION
-public fn main() {
+pub fn main() {
   let int = 11
   int.add(int, _)
 }

@@ -1,7 +1,6 @@
 ---
 source: compiler-core/src/language_server/tests/completion.rs
 expression: "import gleam\n\npub fn main() {\n  0\n}"
-snapshot_kind: text
 ---
 import gle|am
 
@@ -11,3 +10,7 @@ pub fn main() {
 
 
 ----- Completion content -----
+dep
+  kind:   Module
+  edits:
+    [0:7-0:7]: "dep"

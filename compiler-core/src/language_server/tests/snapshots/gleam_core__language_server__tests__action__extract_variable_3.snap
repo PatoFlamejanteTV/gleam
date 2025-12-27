@@ -1,17 +1,16 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn main() {\n  list.map([1, 2, 3], todo, todo)\n}"
-snapshot_kind: text
+expression: "pub fn main() {\n  list.map([1, 2, 3], todo, todo)\n}"
 ---
 ----- BEFORE ACTION
-public fn main() {
+pub fn main() {
   list.map([1, 2, 3], todo, todo)
                             ▔▔▔▔↑
 }
 
 
 ----- AFTER ACTION
-public fn main() {
+pub fn main() {
   let value = todo
   list.map([1, 2, 3], todo, value)
 }

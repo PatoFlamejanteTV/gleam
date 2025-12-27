@@ -1,10 +1,9 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn main() {\n  \"constant\"\n}"
-snapshot_kind: text
+expression: "pub fn main() {\n  \"constant\"\n}"
 ---
 ----- BEFORE ACTION
-public fn main() {
+pub fn main() {
   "constant"
   ↑         
 }
@@ -13,6 +12,6 @@ public fn main() {
 ----- AFTER ACTION
 const string = "constant"
 
-public fn main() {
+pub fn main() {
   string
 }

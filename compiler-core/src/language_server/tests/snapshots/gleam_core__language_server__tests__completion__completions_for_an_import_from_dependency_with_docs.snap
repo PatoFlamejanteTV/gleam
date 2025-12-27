@@ -1,7 +1,6 @@
 ---
 source: compiler-core/src/language_server/tests/completion.rs
 expression: "//// Main package\n//// documentation!\n\nimport gleam\n\npub fn main() {\n  0\n}"
-snapshot_kind: text
 ---
 //// Main package
 //// documentation!
@@ -14,3 +13,7 @@ pub fn main() {
 
 
 ----- Completion content -----
+example_module
+  kind:   Module
+  edits:
+    [3:7-3:7]: "example_module"

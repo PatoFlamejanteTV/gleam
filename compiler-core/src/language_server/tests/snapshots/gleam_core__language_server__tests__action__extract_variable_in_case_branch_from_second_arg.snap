@@ -1,10 +1,9 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn main() {\n  case todo {\n    Ok(_) -> #(Ok(1), Error(\"s\"))\n    Error(_) -> panic\n  }\n}"
-snapshot_kind: text
+expression: "pub fn main() {\n  case todo {\n    Ok(_) -> #(Ok(1), Error(\"s\"))\n    Error(_) -> panic\n  }\n}"
 ---
 ----- BEFORE ACTION
-public fn main() {
+pub fn main() {
   case todo {
     Ok(_) -> #(Ok(1), Error("s"))
                       ↑          
@@ -14,7 +13,7 @@ public fn main() {
 
 
 ----- AFTER ACTION
-public fn main() {
+pub fn main() {
   case todo {
     Ok(_) -> {
       let result = Error("s")

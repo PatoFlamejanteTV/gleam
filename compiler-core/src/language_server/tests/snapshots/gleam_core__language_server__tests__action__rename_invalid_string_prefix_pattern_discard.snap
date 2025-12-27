@@ -1,16 +1,15 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn main() {\n    let assert \"prefix\" <> _boringSuffix = \"prefix-suffix\"\n}"
-snapshot_kind: text
+expression: "pub fn main() {\n    let assert \"prefix\" <> _boringSuffix = \"prefix-suffix\"\n}"
 ---
 ----- BEFORE ACTION
-public fn main() {
+pub fn main() {
     let assert "prefix" <> _boringSuffix = "prefix-suffix"
                         ▔▔▔▔▔▔▔▔▔▔↑                       
 }
 
 
 ----- AFTER ACTION
-public fn main() {
+pub fn main() {
     let assert "prefix" <> _boring_suffix = "prefix-suffix"
 }

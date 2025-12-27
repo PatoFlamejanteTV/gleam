@@ -1,10 +1,9 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn main() {\n  let twelve = \"1\" <> \"2\"\n}"
-snapshot_kind: text
+expression: "pub fn main() {\n  let twelve = \"1\" <> \"2\"\n}"
 ---
 ----- BEFORE ACTION
-public fn main() {
+pub fn main() {
   let twelve = "1" <> "2"
                    ↑     
 }
@@ -13,6 +12,6 @@ public fn main() {
 ----- AFTER ACTION
 const string = "1" <> "2"
 
-public fn main() {
+pub fn main() {
   let twelve = string
 }

@@ -12,9 +12,9 @@ fn module_name_validation() {
 
     assert!(validate_module_name(&"type".into()).is_err());
 
-    assert!(validate_module_name(&"public".into()).is_err());
+    assert!(validate_module_name(&"pub".into()).is_err());
 
     assert!(validate_module_name(&"ok/type".into()).is_err());
 
-    assert!(validate_module_name(&"ok/public".into()).is_err());
+    assert!(validate_module_name(&"ok/pub".into()).is_err());
 }

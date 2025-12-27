@@ -1,10 +1,9 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "public fn main() {\n  use x <- result.try(todo)\n  Ok(123)\n}"
-snapshot_kind: text
+expression: "pub fn main() {\n  use x <- result.try(todo)\n  Ok(123)\n}"
 ---
 ----- BEFORE ACTION
-public fn main() {
+pub fn main() {
   use x <- result.try(todo)
   Ok(123)
   ↑      
@@ -14,7 +13,7 @@ public fn main() {
 ----- AFTER ACTION
 const result = Ok(123)
 
-public fn main() {
+pub fn main() {
   use x <- result.try(todo)
   result
 }
