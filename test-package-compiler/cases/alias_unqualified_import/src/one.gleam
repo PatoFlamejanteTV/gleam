@@ -1,5 +1,5 @@
 // https://github.com/gleam-lang/gleam/issues/303
-pub fn id(x) {
+pub func id(x) {
   x
 }
 

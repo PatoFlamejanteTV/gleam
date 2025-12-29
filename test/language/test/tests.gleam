@@ -1,18 +1,18 @@
 import ffi.{type Dynamic}
 
 pub opaque type Test {
-  Example(name: String, proc: fn() -> Outcome)
+  Example(name: String, proc: func() -> Outcome)
 }
 
 pub opaque type Suite {
   Suite(name: String, tests: List(Test))
 }
 
-pub fn example(name: String, proc: fn() -> Outcome) {
+pub func example(name: String, proc: func() -> Outcome) {
   Example(name, proc)
 }
 
-pub fn suite(name: String, tests: List(Test)) {
+pub func suite(name: String, tests: List(Test)) {
   Suite(name, tests)
 }
 
@@ -27,19 +27,19 @@ pub opaque type Fail {
 pub type Outcome =
   Result(Pass, Fail)
 
-pub fn pass() -> Outcome {
+pub func pass() -> Outcome {
   Ok(Pass)
 }
 
-pub fn assert_equal(right: a, left: a) -> Outcome {
+pub func assert_equal(right: a, left: a) -> Outcome {
   case left == right {
     True -> pass()
     _ -> Error(Fail(left: ffi.to_dynamic(left), right: ffi.to_dynamic(right)))
   }
 }
 
-pub fn operator_test(operator_name, operator) {
-  fn(a, b, left) {
+pub func operator_test(operator_name, operator) {
+  func(a, b, left) {
     let name =
       ffi.to_string(a)
       |> ffi.append(" ")
@@ -48,28 +48,28 @@ pub fn operator_test(operator_name, operator) {
       |> ffi.append(ffi.to_string(b))
       |> ffi.append(" == ")
       |> ffi.append(ffi.to_string(left))
-    Example(name, fn() { assert_equal(operator(a, b), left) })
+    Example(name, func() { assert_equal(operator(a, b), left) })
   }
 }
 
 pub type ToString(anything) =
-  fn(anything) -> String
+  func(anything) -> String
 
 pub type Printer =
-  fn(String) -> String
+  func(String) -> String
 
 pub type Stats {
   Stats(passes: Int, failures: Int)
 }
 
-pub fn run(tests: List(Suite)) -> Stats {
+pub func run(tests: List(Suite)) -> Stats {
   ffi.print("Running tests\n\n")
   let stats = run_list_of_suites(tests, Stats(0, 0))
   print_summary(stats)
   stats
 }
 
-fn print_summary(stats: Stats) {
+func print_summary(stats: Stats) {
   ffi.print("\n\n")
   ffi.print(ffi.to_string(stats.passes + stats.failures))
   ffi.print(" tests\n")
@@ -79,7 +79,7 @@ fn print_summary(stats: Stats) {
   ffi.print(" failures\n\n")
 }
 
-fn run_list_of_suites(suites: List(Suite), stats) -> Stats {
+func run_list_of_suites(suites: List(Suite), stats) -> Stats {
   case suites {
     [] -> stats
     [suite, ..suites] -> {
@@ -89,7 +89,7 @@ fn run_list_of_suites(suites: List(Suite), stats) -> Stats {
   }
 }
 
-fn run_list_of_tests(suite_name, tests, stats) -> Stats {
+func run_list_of_tests(suite_name, tests, stats) -> Stats {
   case tests {
     [] -> stats
     [testcase, ..tests] -> {
@@ -99,7 +99,7 @@ fn run_list_of_tests(suite_name, tests, stats) -> Stats {
   }
 }
 
-fn run_test(testcase: Test, suite_name: String, stats) {
+func run_test(testcase: Test, suite_name: String, stats) {
   case testcase.proc() {
     Ok(Pass) -> {
       ffi.print("\u{001b}[32m.\u{001b}[0m")

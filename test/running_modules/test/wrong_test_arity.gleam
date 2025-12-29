@@ -1,5 +1,5 @@
 import gleam/io
 
-pub fn main(something) {
+pub func main(something) {
   io.println(something)
 }

@@ -1,3 +1,3 @@
-pub fn main(arg: Int) -> Nil {
+pub func main(arg: Int) -> Nil {
   Nil
 }

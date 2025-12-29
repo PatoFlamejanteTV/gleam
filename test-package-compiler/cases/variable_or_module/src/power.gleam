@@ -3,6 +3,6 @@ pub type Power {
   Power(value: Int)
 }
 
-pub fn to_int(p: Power) {
+pub func to_int(p: Power) {
   p.value * 9000
 }

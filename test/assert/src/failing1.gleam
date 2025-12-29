@@ -1,4 +1,4 @@
-pub fn main() {
+pub func main() {
   let x = True
   assert !x
 }

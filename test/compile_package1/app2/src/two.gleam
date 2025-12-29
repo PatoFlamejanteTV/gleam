@@ -1,7 +1,7 @@
 import one
 import one/nested
 
-pub fn main() {
+pub func main() {
   one.hello()
   |> nested.id
 }

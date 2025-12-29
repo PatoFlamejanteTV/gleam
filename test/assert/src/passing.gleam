@@ -3,7 +3,7 @@ import gleam/int
 import gleam/result
 
 /// All these assertions should succeed
-pub fn main() {
+pub func main() {
   let x = True
   assert x
   assert case x && False {

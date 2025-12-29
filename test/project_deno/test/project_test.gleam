@@ -1,6 +1,6 @@
 import project
 
-pub fn main() {
+pub func main() {
   let location = project.main()
   let assert "http://localhost:8080/" = location.href
   let assert "http://localhost:8080" = location.origin

@@ -1,5 +1,5 @@
 //// This module is used to test resolution of nested modules
 
-pub fn id(a) {
+pub func id(a) {
   a
 }

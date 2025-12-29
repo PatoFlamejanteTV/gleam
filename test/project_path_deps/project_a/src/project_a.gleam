@@ -6,7 +6,7 @@ pub type TypeA {
   VariantC(project_c.TypeC)
 }
 
-pub fn main() {
+pub func main() {
   let _ = VariantB(project_b.new("thing", "name"))
   let _ = VariantC(project_c.new("thing"))
 }

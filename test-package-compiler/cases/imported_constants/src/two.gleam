@@ -3,26 +3,26 @@ import one.{A, A as C, B, B as D, User, User as XUser}
 /// For these statements we use the records in a qualified fashion
 pub const qualified_const_a = one.A
 
-pub fn qualified_fn_a() {
+pub func qualified_fn_a() {
   qualified_const_a
 }
 
 pub const qualified_const_b = one.B(one.A, one.A)
 
-pub fn qualified_fn_b() {
+pub func qualified_fn_b() {
   qualified_const_b
 }
 
 /// For these statements we use the records in a unqualified fashion
 pub const unqualified_const_a = A
 
-pub fn unqualified_fn_a() {
+pub func unqualified_fn_a() {
   unqualified_const_a
 }
 
 pub const unqualified_const_b = B(A, A)
 
-pub fn unqualified_fn_b() {
+pub func unqualified_fn_b() {
   unqualified_const_b
 }
 
@@ -30,36 +30,36 @@ pub fn unqualified_fn_b() {
 /// fashion
 pub const aliased_const_a = C
 
-pub fn aliased_fn_a() {
+pub func aliased_fn_a() {
   aliased_const_a
 }
 
 pub const aliased_const_b = D(C, C)
 
-pub fn aliased_fn_b() {
+pub func aliased_fn_b() {
   aliased_const_b
 }
 
 /// For these statements we use the accessors for the record from the other
 /// module
-pub fn accessors(user: one.User) {
+pub func accessors(user: one.User) {
   let name = user.name
   let score = user.score
   #(name, score)
 }
 
 /// For these statements we use destructure the record
-pub fn destructure_qualified(user) {
+pub func destructure_qualified(user) {
   let one.User(name: name, score: score) = user
   #(name, score)
 }
 
-pub fn destructure_unqualified(user) {
+pub func destructure_unqualified(user) {
   let User(name: name, score: score) = user
   #(name, score)
 }
 
-pub fn destructure_aliased(user) {
+pub func destructure_aliased(user) {
   let XUser(name: name, score: score) = user
   #(name, score)
 }

@@ -1,5 +1,5 @@
 import gleam/io
 
-pub fn main() {
+pub func main() {
   io.println("Default test module")
 }

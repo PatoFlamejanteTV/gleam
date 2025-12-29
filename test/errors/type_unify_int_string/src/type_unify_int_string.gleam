@@ -1,4 +1,4 @@
-pub fn hello_world() {
+pub func hello_world() {
   let x: Int = "Eh?"
   x
 }

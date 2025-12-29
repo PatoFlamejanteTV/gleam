@@ -1,6 +1,6 @@
 import one
 import two
 
-pub fn test_() -> Bool {
+pub func test_() -> Bool {
   one.hello() == two.main()
 }

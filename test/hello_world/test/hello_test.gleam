@@ -1,5 +1,5 @@
 import hello_world
 
-fn run(x, y) {
+func run(x, y) {
   x + y
 }

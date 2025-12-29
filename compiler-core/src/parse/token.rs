@@ -309,7 +309,7 @@ impl fmt::Display for Token {
             Token::EndOfFile => "EOF",
             Token::Equal => "=",
             Token::EqualEqual => "==",
-            Token::Fn => "fn",
+            Token::Fn => "func",
             Token::Greater => ">",
             Token::GreaterDot => ">.",
             Token::Guard => "guard",

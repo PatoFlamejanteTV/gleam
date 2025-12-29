@@ -1,4 +1,4 @@
 @internal
-pub fn private_function() -> Nil {
+pub func private_function() -> Nil {
   Nil
 }

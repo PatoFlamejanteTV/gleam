@@ -4,6 +4,6 @@ pub type TypeC {
   ConstructorC(project_d.TypeD)
 }
 
-pub fn new(str) {
+pub func new(str) {
   ConstructorC(project_d.ConstructorD(str))
 }

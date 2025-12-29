@@ -1,6 +1,6 @@
 import gleam/bool
 import gleam/result
 
-pub fn main() {
+pub func main() {
   assert bool.negate(False) && result.is_ok(Error(81))
 }

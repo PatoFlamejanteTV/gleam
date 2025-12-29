@@ -2,12 +2,12 @@ import benchmarks.{print_results}
 import gleam/list
 import gleamy/bench
 
-pub fn main() {
+pub func main() {
   print_results([bench_odd_nums_between(), bench_count_ones(), bench_slice()])
 }
 
-fn bench_odd_nums_between() -> bench.BenchResults {
-  let odd_nums_between = fn(args) {
+func bench_odd_nums_between() -> bench.BenchResults {
+  let odd_nums_between = func(args) {
     let #(start, end) = args
     odd_nums_between(start, end, [])
   }
@@ -26,7 +26,7 @@ fn bench_odd_nums_between() -> bench.BenchResults {
 }
 
 /// Returns a list of numbers from `start` up to, but not including, `end`.
-fn odd_nums_between(start: Int, end: Int, acc: List(Int)) -> List(Int) {
+func odd_nums_between(start: Int, end: Int, acc: List(Int)) -> List(Int) {
   case start {
     start if start >= end -> list.reverse(acc)
     _ -> {
@@ -39,10 +39,10 @@ fn odd_nums_between(start: Int, end: Int, acc: List(Int)) -> List(Int) {
   }
 }
 
-fn bench_count_ones() -> bench.BenchResults {
-  let create_list = fn(size) {
+func bench_count_ones() -> bench.BenchResults {
+  let create_list = func(size) {
     list.range(0, size)
-    |> list.map(fn(n) {
+    |> list.map(func(n) {
       case n {
         _ if n % 3 == 0 -> 1
         _ -> 0
@@ -50,7 +50,7 @@ fn bench_count_ones() -> bench.BenchResults {
     })
   }
 
-  let count_ones = fn(list) { count_ones(list, 0) }
+  let count_ones = func(list) { count_ones(list, 0) }
 
   bench.run(
     [
@@ -66,7 +66,7 @@ fn bench_count_ones() -> bench.BenchResults {
 }
 
 /// Counts the number of ones in a list.
-fn count_ones(list: List(Int), count: Int) -> Int {
+func count_ones(list: List(Int), count: Int) -> Int {
   case list {
     [] -> count
     [1, ..tail] -> count_ones(tail, count + 1)
@@ -74,10 +74,10 @@ fn count_ones(list: List(Int), count: Int) -> Int {
   }
 }
 
-fn bench_slice() -> bench.BenchResults {
+func bench_slice() -> bench.BenchResults {
   let list = list.range(0, 1_000_000)
 
-  let slice = fn(args) {
+  let slice = func(args) {
     let #(list, start, end) = args
     slice(list, start, end, [])
   }
@@ -98,7 +98,7 @@ fn bench_slice() -> bench.BenchResults {
 }
 
 /// Slices a list.
-fn slice(list: List(Int), start: Int, end: Int, acc: List(Int)) -> List(Int) {
+func slice(list: List(Int), start: Int, end: Int, acc: List(Int)) -> List(Int) {
   case list {
     // If the first element is before the slice, skip it.
     [_, ..tail] if start > 0 -> {

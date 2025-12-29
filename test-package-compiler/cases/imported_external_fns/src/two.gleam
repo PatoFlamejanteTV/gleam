@@ -21,7 +21,7 @@ const escaped_const_unqualified = escaped_thing
 
 const escaped_const_unqualified_aliased = xescaped_thing
 
-pub fn the_consts() {
+pub func the_consts() {
   let _ = const_qualified
   let _ = const_qualified_aliased
   let _ = const_unqualified
@@ -42,58 +42,58 @@ pub fn the_consts() {
 
 // Referencing in a function
 
-pub fn fn_reference_qualified() {
+pub func fn_reference_qualified() {
   one.thing
 }
 
-pub fn fn_reference_qualified_aliased() {
+pub func fn_reference_qualified_aliased() {
   aliased.thing
 }
 
-pub fn fn_reference_unqualified() {
+pub func fn_reference_unqualified() {
   thing
 }
 
-pub fn fn_reference_unqualified_aliased() {
+pub func fn_reference_unqualified_aliased() {
   xthing
 }
 
 // Calling the function
 
-pub fn fn_call_qualified() {
+pub func fn_call_qualified() {
   one.thing()
 }
 
-pub fn fn_call_qualified_aliased() {
+pub func fn_call_qualified_aliased() {
   aliased.thing()
 }
 
-pub fn fn_call_unqualified() {
+pub func fn_call_unqualified() {
   thing()
 }
 
-pub fn fn_call_unqualified_aliased() {
+pub func fn_call_unqualified_aliased() {
   xthing()
 }
 
 // Referencing a function as an argument
 
-pub fn argument_reference_qualified() {
+pub func argument_reference_qualified() {
   x(one.escaped_thing)
 }
 
-pub fn argument_reference_qualified_aliased() {
+pub func argument_reference_qualified_aliased() {
   x(aliased.escaped_thing)
 }
 
-pub fn argument_reference_unqualified() {
+pub func argument_reference_unqualified() {
   x(escaped_thing)
 }
 
-pub fn argument_reference_unqualified_aliased() {
+pub func argument_reference_unqualified_aliased() {
   x(xescaped_thing)
 }
 
-fn x(_) {
+func x(_) {
   Nil
 }

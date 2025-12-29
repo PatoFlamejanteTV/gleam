@@ -1,5 +1,5 @@
 import one
 
-pub fn main() -> String {
+pub func main() -> String {
   one.hello()
 }

@@ -1,3 +1,3 @@
-pub fn two() {
+pub func two() {
   "hello from two!"
 }
