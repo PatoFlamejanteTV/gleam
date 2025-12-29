@@ -3816,6 +3816,7 @@ where
             | Token::Echo
             | Token::Else
             | Token::Fn
+            | Token::Guard
             | Token::If
             | Token::Implement
             | Token::Import
@@ -4079,6 +4080,7 @@ functions are declared separately from types.";
                 | Token::Echo
                 | Token::Else
                 | Token::Fn
+                | Token::Guard
                 | Token::If
                 | Token::Implement
                 | Token::Import
@@ -4165,6 +4167,7 @@ functions are declared separately from types.";
                 | Token::Echo
                 | Token::Else
                 | Token::Fn
+                | Token::Guard
                 | Token::If
                 | Token::Implement
                 | Token::Import
@@ -4706,6 +4709,7 @@ fn tok_to_binop(t: &Token) -> Option<BinOp> {
         | Token::Echo
         | Token::Else
         | Token::Fn
+        | Token::Guard
         | Token::If
         | Token::Implement
         | Token::Import
@@ -4957,6 +4961,7 @@ fn clause_guard_reduction(
         | Token::Echo
         | Token::Else
         | Token::Fn
+        | Token::Guard
         | Token::If
         | Token::Implement
         | Token::Import

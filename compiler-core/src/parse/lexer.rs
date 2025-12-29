@@ -33,6 +33,7 @@ pub fn str_to_keyword(word: &str) -> Option<Token> {
         "echo" => Some(Token::Echo),
         "else" => Some(Token::Else),
         "fn" => Some(Token::Fn),
+        "guard" => Some(Token::Guard),
         "if" => Some(Token::If),
         "implement" => Some(Token::Implement),
         "import" => Some(Token::Import),

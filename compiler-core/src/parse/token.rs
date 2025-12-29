@@ -93,6 +93,7 @@ pub enum Token {
     Echo,
     Else,
     Fn,
+    Guard,
     If,
     Implement,
     Import,
@@ -171,6 +172,7 @@ impl Token {
             | Self::Echo
             | Self::Else
             | Self::Fn
+            | Self::Guard
             | Self::If
             | Self::Implement
             | Self::Import
@@ -193,6 +195,7 @@ impl Token {
             | Token::Case
             | Token::Const
             | Token::Fn
+            | Token::Guard
             | Token::If
             | Token::Import
             | Token::Let
@@ -309,6 +312,7 @@ impl fmt::Display for Token {
             Token::Fn => "fn",
             Token::Greater => ">",
             Token::GreaterDot => ">.",
+            Token::Guard => "guard",
             Token::GreaterEqual => ">=",
             Token::GreaterEqualDot => ">=.",
             Token::GtGt => ">>",
