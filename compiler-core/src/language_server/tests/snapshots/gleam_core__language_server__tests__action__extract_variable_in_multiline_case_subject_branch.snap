@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n    case\n        list.map(\n          [1, 2, 3],\n          int.add(1, _)\n        )\n    {\n      _ -> todo\n    }\n}"
+expression: "public fn main() {\n    case\n        list.map(\n          [1, 2, 3],\n          int.add(1, _)\n        )\n    {\n      _ -> todo\n    }\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
     case
         list.map(
           [1, 2, 3],
@@ -17,7 +18,7 @@ pub fn main() {
 
 
 ----- AFTER ACTION
-pub fn main() {
+public fn main() {
     let ints = [1, 2, 3]
     case
         list.map(

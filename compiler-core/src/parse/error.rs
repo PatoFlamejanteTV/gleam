@@ -495,6 +495,7 @@ utf16_codepoint, utf32_codepoint, signed, unsigned, big, little, native, size, u
                     | Token::Echo
                     | Token::Else
                     | Token::Fn
+                    | Token::Guard
                     | Token::If
                     | Token::Implement
                     | Token::Import
@@ -611,8 +612,8 @@ utf16_codepoint, utf32_codepoint, signed, unsigned, big, little, native, size, u
                 field_type,
             } => {
                 let (accessor, opaque) = match *public {
-                    true if *opaque => ("pub ", "opaque "),
-                    true => ("pub ", ""),
+                    true if *opaque => ("public ", "opaque "),
+                    true => ("public ", ""),
                     false => ("", ""),
                 };
 

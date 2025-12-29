@@ -686,7 +686,7 @@ fn multiple_external_for_same_project_erlang() {
         r#"
 @external(erlang, "one", "two")
 @external(erlang, "three", "four")
-pub fn one(x: Int) -> Int {
+public fn one(x: Int) -> Int {
   todo
 }
 "#
@@ -699,7 +699,7 @@ fn multiple_external_for_same_project_javascript() {
         r#"
 @external(javascript, "one", "two")
 @external(javascript, "three", "four")
-pub fn one(x: Int) -> Int {
+public fn one(x: Int) -> Int {
   todo
 }
 "#
@@ -711,7 +711,7 @@ fn unknown_external_target() {
     assert_module_error!(
         r#"
 @external(erl, "one", "two")
-pub fn one(x: Int) -> Int {
+public fn one(x: Int) -> Int {
   todo
 }"#
     );
@@ -722,7 +722,7 @@ fn unknown_target() {
     assert_module_error!(
         r#"
 @target(abc)
-pub fn one() {}"#
+public fn one() {}"#
     );
 }
 
@@ -731,7 +731,7 @@ fn missing_target() {
     assert_module_error!(
         r#"
 @target()
-pub fn one() {}"#
+public fn one() {}"#
     );
 }
 
@@ -740,7 +740,7 @@ fn missing_target_and_bracket() {
     assert_module_error!(
         r#"
 @target(
-pub fn one() {}"#
+public fn one() {}"#
     );
 }
 
@@ -748,7 +748,7 @@ pub fn one() {}"#
 fn unknown_attribute() {
     assert_module_error!(
         r#"@go_faster()
-pub fn main() { 1 }"#
+public fn main() { 1 }"#
     );
 }
 
@@ -763,7 +763,7 @@ fn multiple_deprecation_attributes() {
         r#"
 @deprecated("1")
 @deprecated("2")
-pub fn main() -> Nil {
+public fn main() -> Nil {
   Nil
 }
 "#
@@ -775,7 +775,7 @@ fn deprecation_without_message() {
     assert_module_error!(
         r#"
 @deprecated()
-pub fn main() -> Nil {
+public fn main() -> Nil {
   Nil
 }
 "#
@@ -788,7 +788,7 @@ fn multiple_internal_attributes() {
         r#"
 @internal
 @internal
-pub fn main() -> Nil {
+public fn main() -> Nil {
   Nil
 }
 "#
@@ -811,7 +811,7 @@ fn external_attribute_with_custom_type() {
         r#"
 @external(erlang, "gleam_stdlib", "dict")
 @external(javascript, "./gleam_stdlib.d.ts", "Dict")
-pub type Dict(key, value)
+public type Dict(key, value)
 "#
     );
 }
@@ -821,7 +821,7 @@ fn external_attribute_with_non_fn_definition() {
     assert_module_error!(
         r#"
 @external(erlang, "module", "fun")
-pub type Fun = Fun
+public type Fun = Fun
 "#
     );
 }
@@ -840,7 +840,7 @@ fn attributes_with_improper_definition() {
 fn const_with_function_call() {
     assert_module_error!(
         r#"
-pub fn wibble() { 123 }
+public fn wibble() { 123 }
 const wib: Int = wibble()
 "#
     );
@@ -850,7 +850,7 @@ const wib: Int = wibble()
 fn const_with_function_call_with_args() {
     assert_module_error!(
         r#"
-pub fn wibble() { 123 }
+public fn wibble() { 123 }
 const wib: Int = wibble(1, "wobble")
 "#
     );
@@ -902,10 +902,23 @@ fn reserved_echo() {
 }
 
 #[test]
+fn reserved_guard() {
+    assert_module_error!(r#"const guard = 1"#);
+}
+
+#[test]
+fn guard_token() {
+    assert_eq!(
+        make_tokenizer("guard").collect_vec(),
+        [Ok((0, Token::Guard, 5))]
+    );
+}
+
+#[test]
 fn capture_with_name() {
     assert_module_error!(
         r#"
-pub fn main() {
+public fn main() {
   add(_name, 1)
 }
 
@@ -920,7 +933,7 @@ fn add(x, y) {
 fn list_spread_with_no_tail_in_the_middle_of_a_list() {
     assert_module_error!(
         r#"
-pub fn main() -> Nil {
+public fn main() -> Nil {
   let xs = [1, 2, 3]
   [1, 2, .., 3 + 3, 4]
 }
@@ -932,7 +945,7 @@ pub fn main() -> Nil {
 fn list_spread_followed_by_extra_items() {
     assert_module_error!(
         r#"
-pub fn main() -> Nil {
+public fn main() -> Nil {
   let xs = [1, 2, 3]
   [1, 2, ..xs, 3 + 3, 4]
 }
@@ -944,7 +957,7 @@ pub fn main() -> Nil {
 fn list_spread_followed_by_extra_item_and_another_spread() {
     assert_module_error!(
         r#"
-pub fn main() -> Nil {
+public fn main() -> Nil {
   let xs = [1, 2, 3]
   let ys = [5, 6, 7]
   [..xs, 4, ..ys]
@@ -957,7 +970,7 @@ pub fn main() -> Nil {
 fn list_spread_followed_by_other_spread() {
     assert_module_error!(
         r#"
-pub fn main() -> Nil {
+public fn main() -> Nil {
   let xs = [1, 2, 3]
   let ys = [5, 6, 7]
   [1, ..xs, ..ys]
@@ -970,7 +983,7 @@ pub fn main() -> Nil {
 fn list_spread_as_first_item_followed_by_other_items() {
     assert_module_error!(
         r#"
-pub fn main() -> Nil {
+public fn main() -> Nil {
   let xs = [1, 2, 3]
   [..xs, 3 + 3, 4]
 }
@@ -1034,7 +1047,7 @@ let a = "inner 'quotes'"
 fn string_single_char_suggestion() {
     assert_module_error!(
         "
-    pub fn main() {
+    public fn main() {
         let a = 'example'
       }
     "
@@ -1087,7 +1100,7 @@ type Wibble {
 fn wrong_record_access_pattern() {
     assert_module_error!(
         "
-pub fn main() {
+public fn main() {
   case wibble {
     wibble.thing -> 1
   }
@@ -1199,7 +1212,7 @@ fn assignment_pattern_invalid_bit_segment() {
     assert_module_error!(
         "
 fn main() {
-    let <<b1, pub>> = <<24, 3>>
+    let <<b1, public>> = <<24, 3>>
 }
 "
     );
@@ -1239,7 +1252,7 @@ type A {
 fn type_invalid_record_constructor() {
     assert_module_error!(
         "
-pub type User {
+public type User {
     name: String,
 }
 "
@@ -1250,7 +1263,7 @@ pub type User {
 fn type_invalid_record_constructor_without_field_type() {
     assert_module_error!(
         "
-pub opaque type User {
+public opaque type User {
     name
 }
 "
@@ -1475,7 +1488,7 @@ case my_string {
 fn invalid_label_shorthand() {
     assert_module_error!(
         "
-pub fn main() {
+public fn main() {
   wibble(:)
 }
 "
@@ -1486,7 +1499,7 @@ pub fn main() {
 fn invalid_label_shorthand_2() {
     assert_module_error!(
         "
-pub fn main() {
+public fn main() {
   wibble(:,)
 }
 "
@@ -1497,7 +1510,7 @@ pub fn main() {
 fn invalid_label_shorthand_3() {
     assert_module_error!(
         "
-pub fn main() {
+public fn main() {
   wibble(:arg)
 }
 "
@@ -1508,7 +1521,7 @@ pub fn main() {
 fn invalid_label_shorthand_4() {
     assert_module_error!(
         "
-pub fn main() {
+public fn main() {
   wibble(arg::)
 }
 "
@@ -1519,7 +1532,7 @@ pub fn main() {
 fn invalid_label_shorthand_5() {
     assert_module_error!(
         "
-pub fn main() {
+public fn main() {
   wibble(arg::arg)
 }
 "
@@ -1530,7 +1543,7 @@ pub fn main() {
 fn invalid_pattern_label_shorthand() {
     assert_module_error!(
         "
-pub fn main() {
+public fn main() {
   let Wibble(:) = todo
 }
 "
@@ -1541,7 +1554,7 @@ pub fn main() {
 fn invalid_pattern_label_shorthand_2() {
     assert_module_error!(
         "
-pub fn main() {
+public fn main() {
   let Wibble(:arg) = todo
 }
 "
@@ -1552,7 +1565,7 @@ pub fn main() {
 fn invalid_pattern_label_shorthand_3() {
     assert_module_error!(
         "
-pub fn main() {
+public fn main() {
   let Wibble(arg::) = todo
 }
 "
@@ -1563,7 +1576,7 @@ pub fn main() {
 fn invalid_pattern_label_shorthand_4() {
     assert_module_error!(
         "
-pub fn main() {
+public fn main() {
   let Wibble(arg: arg:) = todo
 }
 "
@@ -1574,7 +1587,7 @@ pub fn main() {
 fn invalid_pattern_label_shorthand_5() {
     assert_module_error!(
         "
-pub fn main() {
+public fn main() {
   let Wibble(arg1: arg2:) = todo
 }
 "
@@ -1602,10 +1615,10 @@ fn doc_comment_before_comment_is_not_attached_to_following_function() {
         first_parsed_docstring(
             r#"
     /// Not included!
-    // pub fn call()
+    // public fn call()
 
     /// Doc!
-    pub fn wibble() {}
+    public fn wibble() {}
 "#
         ),
         " Doc!\n"
@@ -1618,10 +1631,10 @@ fn doc_comment_before_comment_is_not_attached_to_following_type() {
         first_parsed_docstring(
             r#"
     /// Not included!
-    // pub fn call()
+    // public fn call()
 
     /// Doc!
-    pub type Wibble
+    public type Wibble
 "#
         ),
         " Doc!\n"
@@ -1634,10 +1647,10 @@ fn doc_comment_before_comment_is_not_attached_to_following_type_alias() {
         first_parsed_docstring(
             r#"
     /// Not included!
-    // pub fn call()
+    // public fn call()
 
     /// Doc!
-    pub type Wibble = Int
+    public type Wibble = Int
 "#
         ),
         " Doc!\n"
@@ -1650,10 +1663,10 @@ fn doc_comment_before_comment_is_not_attached_to_following_constant() {
         first_parsed_docstring(
             r#"
     /// Not included!
-    // pub fn call()
+    // public fn call()
 
     /// Doc!
-    pub const wibble = 1
+    public const wibble = 1
 "#
         ),
         " Doc!\n"
@@ -1664,7 +1677,7 @@ fn doc_comment_before_comment_is_not_attached_to_following_constant() {
 fn non_module_level_function_with_a_name() {
     assert_module_error!(
         r#"
-pub fn main() {
+public fn main() {
   fn my() { 1 }
 }
 "#
@@ -1676,7 +1689,7 @@ fn error_message_on_variable_starting_with_underscore() {
     // https://github.com/gleam-lang/gleam/issues/3504
     assert_module_error!(
         "
-  pub fn main() {
+  public fn main() {
     let val = _func_starting_with_underscore(1)
   }"
     );
@@ -1686,7 +1699,7 @@ fn error_message_on_variable_starting_with_underscore() {
 fn non_module_level_function_with_not_a_name() {
     assert_module_error!(
         r#"
-pub fn main() {
+public fn main() {
   fn @() { 1 }  // wrong token and not a name
 }
 "#
@@ -1698,7 +1711,7 @@ fn error_message_on_variable_starting_with_underscore2() {
     // https://github.com/gleam-lang/gleam/issues/3504
     assert_module_error!(
         "
-  pub fn main() {
+  public fn main() {
     case 1 {
       1 -> _with_underscore(1)
     }
@@ -1722,7 +1735,7 @@ fn pub_function_inside_a_type() {
     assert_module_error!(
         r#"
 type Wibble {
-  pub fn wobble() {}
+  public fn wobble() {}
 }
 "#
     );
@@ -1732,7 +1745,7 @@ type Wibble {
 fn if_like_expression() {
     assert_module_error!(
         r#"
-pub fn main() {
+public fn main() {
   let a = if wibble {
     wobble
   }
@@ -1746,7 +1759,7 @@ pub fn main() {
 fn missing_constructor_arguments() {
     assert_module_error!(
         "
-pub type A {
+public type A {
   A(Int)
 }
 
@@ -1760,7 +1773,7 @@ const a = A()
 fn missing_type_constructor_arguments_in_type_definition() {
     assert_module_error!(
         "
-pub type A() {
+public type A() {
   A(Int)
 }
 "
@@ -1771,7 +1784,7 @@ pub type A() {
 fn tuple_without_hash() {
     assert_module_error!(
         r#"
-pub fn main() {
+public fn main() {
     let triple = (1, 2.2, "three")
     io.debug(triple)
     let (a, *, *) = triple
@@ -1948,7 +1961,7 @@ fn case_guard_with_empty_block() {
 fn constant_inside_function() {
     assert_module_error!(
         "
-pub fn main() {
+public fn main() {
   const x = 10
   x
 }
@@ -2013,7 +2026,7 @@ type Either<type A, type B> {
 fn wrong_type_of_comments_with_hash() {
     assert_module_error!(
         r#"
-pub fn main() {
+public fn main() {
   # a python-style comment
 }
 "#
@@ -2024,7 +2037,7 @@ pub fn main() {
 fn wrong_function_return_type_declaration_using_colon_instead_of_right_arrow() {
     assert_module_error!(
         r#"
-pub fn main(): Nil {}
+public fn main(): Nil {}
         "#
     );
 }

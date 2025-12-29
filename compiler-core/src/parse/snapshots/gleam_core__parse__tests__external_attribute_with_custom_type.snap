@@ -1,6 +1,7 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\n@external(erlang, \"gleam_stdlib\", \"dict\")\n@external(javascript, \"./gleam_stdlib.d.ts\", \"Dict\")\npub type Dict(key, value)\n"
+expression: "\n@external(erlang, \"gleam_stdlib\", \"dict\")\n@external(javascript, \"./gleam_stdlib.d.ts\", \"Dict\")\npublic type Dict(key, value)\n"
+snapshot_kind: text
 ---
 Parsed {
     module: Module {
@@ -13,13 +14,13 @@ Parsed {
                     CustomType {
                         location: SrcSpan {
                             start: 96,
-                            end: 121,
+                            end: 124,
                         },
-                        end_position: 121,
+                        end_position: 124,
                         name: "Dict",
                         name_location: SrcSpan {
-                            start: 105,
-                            end: 109,
+                            start: 108,
+                            end: 112,
                         },
                         publicity: Public,
                         constructors: [],
@@ -29,15 +30,15 @@ Parsed {
                         parameters: [
                             (
                                 SrcSpan {
-                                    start: 110,
-                                    end: 113,
+                                    start: 113,
+                                    end: 116,
                                 },
                                 "key",
                             ),
                             (
                                 SrcSpan {
-                                    start: 115,
-                                    end: 120,
+                                    start: 118,
+                                    end: 123,
                                 },
                                 "value",
                             ),
@@ -86,7 +87,7 @@ Parsed {
             0,
             42,
             95,
-            121,
+            124,
         ],
         trailing_commas: [],
     },

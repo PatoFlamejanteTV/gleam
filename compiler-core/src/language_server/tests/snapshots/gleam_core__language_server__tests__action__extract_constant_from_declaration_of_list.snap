@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n  let c = [3.1415, 0.33333333]\n}"
+expression: "public fn main() {\n  let c = [3.1415, 0.33333333]\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
   let c = [3.1415, 0.33333333]
           ↑                   
 }
@@ -12,6 +13,6 @@ pub fn main() {
 ----- AFTER ACTION
 const floats = [3.1415, 0.33333333]
 
-pub fn main() {
+public fn main() {
   let c = floats
 }

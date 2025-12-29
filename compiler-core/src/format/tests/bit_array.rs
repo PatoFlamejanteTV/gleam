@@ -56,7 +56,7 @@ fn tight_empty() {
 #[test]
 fn comments_are_not_moved_out_of_empty_bit_array() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   // This is an empty bit array!
   <<
     // Nothing here...
@@ -69,7 +69,7 @@ fn comments_are_not_moved_out_of_empty_bit_array() {
 #[test]
 fn empty_bit_arrays_with_comment_inside_are_indented_properly() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   fun(
     <<
       // Nothing here...
@@ -87,7 +87,7 @@ fn empty_bit_arrays_with_comment_inside_are_indented_properly() {
 #[test]
 fn comments_inside_non_empty_bit_arrays_are_not_moved() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   fun(
     <<
       // One is below me.
@@ -135,7 +135,7 @@ fn concise_wrapping_of_simple_bit_arrays1() {
 #[test]
 fn concise_wrapping_of_simple_bit_arrays2() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   <<
     "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
     "ten", "eleven", "twelve",
@@ -181,7 +181,7 @@ fn concise_wrapping_of_simple_bit_arrays5() {
 #[test]
 fn binop_value() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   <<{ 1 + 1 }>>
 }
 "#
@@ -191,7 +191,7 @@ fn binop_value() {
 #[test]
 fn block_value() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   <<
     {
       io.println("hi")
@@ -238,7 +238,7 @@ fn bit_array_segments_are_kept_one_per_line() {
 fn bit_array_with_trailing_comma_is_broken() {
     assert_format_rewrite!(
         "pub fn main() { <<1, 2, a,>> }",
-        r#"pub fn main() {
+        r#"public fn main() {
   <<
     1,
     2,
@@ -265,7 +265,7 @@ fn constant_bit_array_with_trailing_comma_is_broken() {
 #[test]
 fn bit_array_with_trailing_comma_is_kept_broken() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   <<
     1,
     2,
@@ -291,7 +291,7 @@ fn constant_bit_array_with_trailing_comma_is_kept_broken() {
 #[test]
 fn bit_array_with_no_trailing_comma_is_packed_on_a_single_line() {
     assert_format_rewrite!(
-        r#"pub fn main() {
+        r#"public fn main() {
   <<
     1,
     2,
@@ -299,7 +299,7 @@ fn bit_array_with_no_trailing_comma_is_packed_on_a_single_line() {
   >>
 }
 "#,
-        r#"pub fn main() {
+        r#"public fn main() {
   <<1, 2, a>>
 }
 "#
@@ -385,7 +385,7 @@ fn constant_bit_array_with_no_comma_is_packed_on_a_single_line_or_split_one_item
 #[test]
 fn simple_bit_array_with_no_comma_is_packed_on_a_single_line_or_split_one_item_per_line() {
     assert_format_rewrite!(
-        r#"pub fn main() {
+        r#"public fn main() {
   <<
     "hello",
     "wibble wobble",
@@ -398,7 +398,7 @@ fn simple_bit_array_with_no_comma_is_packed_on_a_single_line_or_split_one_item_p
   >>
 }
 "#,
-        r#"pub fn main() {
+        r#"public fn main() {
   <<
     "hello",
     "wibble wobble",
@@ -417,7 +417,7 @@ fn simple_bit_array_with_no_comma_is_packed_on_a_single_line_or_split_one_item_p
 #[test]
 fn simple_bit_array_with_trailing_comma_and_multiple_items_per_line_is_packed() {
     assert_format_rewrite!(
-        r#"pub fn main() {
+        r#"public fn main() {
   <<
     "hello",
     "wibble wobble",
@@ -427,7 +427,7 @@ fn simple_bit_array_with_trailing_comma_and_multiple_items_per_line_is_packed() 
   >>
 }
 "#,
-        r#"pub fn main() {
+        r#"public fn main() {
   <<
     "hello", "wibble wobble", "these are all simple strings",
     "and the bit array will be packed since the following strings are",
@@ -441,7 +441,7 @@ fn simple_bit_array_with_trailing_comma_and_multiple_items_per_line_is_packed() 
 #[test]
 fn simple_constant_bit_array_with_trailing_comma_and_multiple_items_per_line_is_packed() {
     assert_format_rewrite!(
-        r#"pub const bit_array = <<
+        r#"public const bit_array = <<
   "hello",
   "wibble wobble",
   "these are all simple strings",
@@ -449,7 +449,7 @@ fn simple_constant_bit_array_with_trailing_comma_and_multiple_items_per_line_is_
   "on the same", "line", "and there's a trailing comma ->",
 >>
 "#,
-        r#"pub const bit_array = <<
+        r#"public const bit_array = <<
   "hello", "wibble wobble", "these are all simple strings",
   "and the bit array will be packed since the following strings are",
   "on the same", "line", "and there's a trailing comma ->",
@@ -461,7 +461,7 @@ fn simple_constant_bit_array_with_trailing_comma_and_multiple_items_per_line_is_
 #[test]
 fn simple_packed_bit_array_with_trailing_comma_is_kept_with_multiple_items_per_line() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   <<
     "hello", "wibble wobble", "these are all simple strings",
     "and the bit array will be kept packed since it ends with a trailing comma",
@@ -475,11 +475,11 @@ fn simple_packed_bit_array_with_trailing_comma_is_kept_with_multiple_items_per_l
 #[test]
 fn simple_single_line_bit_array_with_trailing_comma_is_split_one_item_per_line() {
     assert_format_rewrite!(
-        r#"pub fn main() {
+        r#"public fn main() {
   <<"these are all simple strings", "but the bit array won't be packed", "since it ends with a trailing comma ->",>>
 }
 "#,
-        r#"pub fn main() {
+        r#"public fn main() {
   <<
     "these are all simple strings",
     "but the bit array won't be packed",
@@ -493,11 +493,11 @@ fn simple_single_line_bit_array_with_trailing_comma_is_split_one_item_per_line()
 #[test]
 fn simple_single_line_bit_array_with_no_trailing_comma_is_split_one_item_per_line() {
     assert_format_rewrite!(
-        r#"pub fn main() {
+        r#"public fn main() {
   <<"these are all simple strings", "but the bit array won't be packed", "even if it doesn't end with a trailing comma!">>
 }
 "#,
-        r#"pub fn main() {
+        r#"public fn main() {
   <<
     "these are all simple strings",
     "but the bit array won't be packed",

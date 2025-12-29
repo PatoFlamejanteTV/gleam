@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n  echo 1\n\n  // Oh no I hope I'm not deleted by the code action!!\n  Nil\n}"
+expression: "public fn main() {\n  echo 1\n\n  // Oh no I hope I'm not deleted by the code action!!\n  Nil\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
   echo 1
   ↑     
 
@@ -13,7 +14,7 @@ pub fn main() {
 
 
 ----- AFTER ACTION
-pub fn main() {
+public fn main() {
   // Oh no I hope I'm not deleted by the code action!!
   Nil
 }

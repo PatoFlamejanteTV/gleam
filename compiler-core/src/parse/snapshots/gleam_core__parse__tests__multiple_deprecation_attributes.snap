@@ -1,12 +1,13 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\n@deprecated(\"1\")\n@deprecated(\"2\")\npub fn main() -> Nil {\n  Nil\n}\n"
+expression: "\n@deprecated(\"1\")\n@deprecated(\"2\")\npublic fn main() -> Nil {\n  Nil\n}\n"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
 @deprecated("1")
 @deprecated("2")
-pub fn main() -> Nil {
+public fn main() -> Nil {
   Nil
 }
 

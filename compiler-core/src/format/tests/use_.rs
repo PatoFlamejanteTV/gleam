@@ -3,7 +3,7 @@ use crate::{assert_format, assert_format_rewrite};
 #[test]
 fn use_1() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use <- benchmark("thingy")
   todo
 }
@@ -14,7 +14,7 @@ fn use_1() {
 #[test]
 fn use_2() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use user <- login()
   todo
 }
@@ -25,7 +25,7 @@ fn use_2() {
 #[test]
 fn use_3() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use one, two, three, four <- get_multiple_things()
   todo
 }
@@ -36,7 +36,7 @@ fn use_3() {
 #[test]
 fn use_4() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use
     one,
     two,
@@ -61,7 +61,7 @@ fn use_4() {
 #[test]
 fn use_5() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use
     one,
     two,
@@ -86,7 +86,7 @@ fn use_5() {
 #[test]
 fn use_6() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use
     one,
     two,
@@ -120,7 +120,7 @@ fn use_6() {
 #[test]
 fn pipe_call() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use <-
     a
     |> b
@@ -133,7 +133,7 @@ fn pipe_call() {
 #[test]
 fn use_pipe_everything() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   {
     use <- a
     todo
@@ -148,7 +148,7 @@ fn use_pipe_everything() {
 #[test]
 fn long_right_hand_side_0_arguments() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use <- some_really_long_function_call(
     "one",
     "two",
@@ -168,7 +168,7 @@ fn long_right_hand_side_0_arguments() {
 #[test]
 fn long_right_hand_side_1_argument() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use x <- some_really_long_function_call(
     "one",
     "two",
@@ -188,7 +188,7 @@ fn long_right_hand_side_1_argument() {
 #[test]
 fn long_right_hand_side_2_arguments() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use x, y <- some_really_long_function_call(
     "one",
     "two",
@@ -208,7 +208,7 @@ fn long_right_hand_side_2_arguments() {
 #[test]
 fn arity_1_var_call() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use x, y <- await(
     file.read()
     |> promise.map(something),
@@ -222,7 +222,7 @@ fn arity_1_var_call() {
 #[test]
 fn arity_1_access_call() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use x, y <- promise.await(
     file.read()
     |> promise.map(something),
@@ -236,7 +236,7 @@ fn arity_1_access_call() {
 #[test]
 fn patterns() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use Box(x) <- apply(Box(1))
   x
 }
@@ -247,7 +247,7 @@ fn patterns() {
 #[test]
 fn patterns_with_annotation() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use Box(x): Box(Int) <- apply(Box(1))
   x
 }
@@ -258,7 +258,7 @@ fn patterns_with_annotation() {
 #[test]
 fn long_patterns() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use
     Box(
       xxxxxxxxxxxxxxxxxxxxxxx,
@@ -275,7 +275,7 @@ fn long_patterns() {
 #[test]
 fn multiple_long_patterns() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use
     Box(
       xxxxxxxxxxxxxxxxxxxxxxx,
@@ -295,7 +295,7 @@ fn multiple_long_patterns() {
 #[test]
 fn multiple_long_patterns_with_annotations() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use
     Box(
       xxxxxxxxxxxxxxxxxxxxxxx,
@@ -313,7 +313,7 @@ fn multiple_long_patterns_with_annotations() {
 #[test]
 fn multiple_long_annotations() {
     assert_format!(
-        r#"pub fn main() {
+        r#"public fn main() {
   use
     Box(_, _): Box(
       Xxzxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx,

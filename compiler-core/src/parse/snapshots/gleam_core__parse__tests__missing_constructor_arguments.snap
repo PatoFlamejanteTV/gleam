@@ -1,10 +1,11 @@
 ---
 source: compiler-core/src/parse/tests.rs
-expression: "\npub type A {\n  A(Int)\n}\n\nconst a = A()\n"
+expression: "\npublic type A {\n  A(Int)\n}\n\nconst a = A()\n"
+snapshot_kind: text
 ---
 ----- SOURCE CODE
 
-pub type A {
+public type A {
   A(Int)
 }
 

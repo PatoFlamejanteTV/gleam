@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn go(n: Int) {\n  case n {\n    1 -> todo\n    2 -> n * 2\n    3 -> todo\n    _ -> todo\n  }\n  }"
+expression: "public fn go(n: Int) {\n  case n {\n    1 -> todo\n    2 -> n * 2\n    3 -> todo\n    _ -> todo\n  }\n  }"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn go(n: Int) {
+public fn go(n: Int) {
   case n {
     1 -> todo
     ▔▔▔▔▔▔▔▔▔
@@ -17,7 +18,7 @@ pub fn go(n: Int) {
 
 
 ----- AFTER ACTION
-pub fn go(n: Int) {
+public fn go(n: Int) {
   case n {
     1 | 2 | 3 -> n * 2
     _ -> todo

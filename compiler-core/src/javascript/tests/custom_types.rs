@@ -36,7 +36,7 @@ pub const that = ThatOneIsAMuchMuchMuchMuchMuchMuchMuchMuchMuchMuchMuchMuchLonge
 #[test]
 fn zero_arity_imported() {
     assert_js!(
-        ("other", r#"pub type One { Two }"#),
+        ("other", r#"public type One { Two }"#),
         r#"import other
 pub fn main() {
   other.Two
@@ -47,7 +47,7 @@ pub fn main() {
 #[test]
 fn zero_arity_imported_typscript() {
     assert_ts_def!(
-        (CURRENT_PACKAGE, "other", r#"pub type One { Two }"#),
+        (CURRENT_PACKAGE, "other", r#"public type One { Two }"#),
         r#"import other
 pub fn main() {
   other.Two
@@ -58,7 +58,7 @@ pub fn main() {
 #[test]
 fn zero_arity_imported_unqualified() {
     assert_js!(
-        ("other", r#"pub type One { Two }"#),
+        ("other", r#"public type One { Two }"#),
         r#"import other.{Two}
 pub fn main() {
   Two
@@ -69,7 +69,7 @@ pub fn main() {
 #[test]
 fn zero_arity_imported_unqualified_typescript() {
     assert_ts_def!(
-        (CURRENT_PACKAGE, "other", r#"pub type One { Two }"#),
+        (CURRENT_PACKAGE, "other", r#"public type One { Two }"#),
         r#"import other.{Two}
 pub fn main() {
   Two
@@ -80,7 +80,7 @@ pub fn main() {
 #[test]
 fn zero_arity_imported_unqualified_aliased() {
     assert_js!(
-        ("other", r#"pub type One { Two }"#),
+        ("other", r#"public type One { Two }"#),
         r#"import other.{Two as Three}
 pub fn main() {
   Three
@@ -91,7 +91,7 @@ pub fn main() {
 #[test]
 fn zero_arity_imported_unqualified_aliased_typescript() {
     assert_ts_def!(
-        (CURRENT_PACKAGE, "other", r#"pub type One { Two }"#),
+        (CURRENT_PACKAGE, "other", r#"public type One { Two }"#),
         r#"import other.{Two as Three}
 pub fn main() {
   Three
@@ -102,7 +102,7 @@ pub fn main() {
 #[test]
 fn const_zero_arity_imported() {
     assert_js!(
-        ("other", r#"pub type One { Two }"#),
+        ("other", r#"public type One { Two }"#),
         r#"import other
 pub const x = other.Two
 "#,
@@ -112,7 +112,7 @@ pub const x = other.Two
 #[test]
 fn const_zero_arity_imported_unqualified() {
     assert_js!(
-        ("other", r#"pub type One { Two }"#),
+        ("other", r#"public type One { Two }"#),
         r#"import other.{Two}
 pub const a = Two
 "#,
@@ -298,7 +298,7 @@ pub fn go(cat) {
 #[test]
 fn nested_pattern_with_labels() {
     assert_js!(
-        r#"pub type Box(x) { Box(a: Int, b: x) }
+        r#"public type Box(x) { Box(a: Int, b: x) }
 pub fn go(x) {
   case x {
     Box(a: _, b: Box(a: a, b: b)) -> a + b
@@ -312,7 +312,7 @@ pub fn go(x) {
 #[test]
 fn imported_no_label() {
     assert_js!(
-        ("other", r#"pub type One { Two(Int) }"#),
+        ("other", r#"public type One { Two(Int) }"#),
         r#"import other
 pub fn main() {
   other.Two(1)
@@ -323,7 +323,7 @@ pub fn main() {
 #[test]
 fn imported_ignoring_label() {
     assert_js!(
-        ("other", r#"pub type One { Two(field: Int) }"#),
+        ("other", r#"public type One { Two(field: Int) }"#),
         r#"import other
 pub fn main() {
   other.Two(1)
@@ -334,7 +334,7 @@ pub fn main() {
 #[test]
 fn imported_using_label() {
     assert_js!(
-        ("other", r#"pub type One { Two(field: Int) }"#),
+        ("other", r#"public type One { Two(field: Int) }"#),
         r#"import other
 pub fn main() {
   other.Two(field: 1)
@@ -345,7 +345,7 @@ pub fn main() {
 #[test]
 fn imported_multiple_fields() {
     assert_js!(
-        ("other", r#"pub type One { Two(a: Int, b: Int, c: Int) }"#),
+        ("other", r#"public type One { Two(a: Int, b: Int, c: Int) }"#),
         r#"import other
 pub fn main() {
   other.Two(b: 2, c: 3, a: 1)
@@ -356,7 +356,7 @@ pub fn main() {
 #[test]
 fn unqualified_imported_no_label() {
     assert_js!(
-        ("other", r#"pub type One { Two(Int) }"#),
+        ("other", r#"public type One { Two(Int) }"#),
         r#"import other.{Two}
 pub fn main() {
   Two(1)
@@ -367,7 +367,7 @@ pub fn main() {
 #[test]
 fn unqualified_imported_no_label_typescript() {
     assert_ts_def!(
-        (CURRENT_PACKAGE, "other", r#"pub type One { Two(Int) }"#),
+        (CURRENT_PACKAGE, "other", r#"public type One { Two(Int) }"#),
         r#"import other.{Two}
 pub fn main() {
   Two(1)
@@ -378,7 +378,7 @@ pub fn main() {
 #[test]
 fn unqualified_imported_ignoring_label() {
     assert_js!(
-        ("other", r#"pub type One { Two(field: Int) }"#),
+        ("other", r#"public type One { Two(field: Int) }"#),
         r#"import other.{Two}
 pub fn main() {
   Two(1)
@@ -389,7 +389,7 @@ pub fn main() {
 #[test]
 fn unqualified_imported_using_label() {
     assert_js!(
-        ("other", r#"pub type One { Two(field: Int) }"#),
+        ("other", r#"public type One { Two(field: Int) }"#),
         r#"import other.{Two}
 pub fn main() {
   Two(field: 1)
@@ -400,7 +400,7 @@ pub fn main() {
 #[test]
 fn unqualified_imported_multiple_fields() {
     assert_js!(
-        ("other", r#"pub type One { Two(a: Int, b: Int, c: Int) }"#),
+        ("other", r#"public type One { Two(a: Int, b: Int, c: Int) }"#),
         r#"import other.{Two}
 pub fn main() {
   Two(b: 2, c: 3, a: 1)
@@ -411,7 +411,7 @@ pub fn main() {
 #[test]
 fn constructor_as_value() {
     assert_js!(
-        ("other", r#"pub type One { Two(a: Int, b: Int, c: Int) }"#),
+        ("other", r#"public type One { Two(a: Int, b: Int, c: Int) }"#),
         r#"import other
 pub fn main() {
   other.Two
@@ -422,7 +422,7 @@ pub fn main() {
 #[test]
 fn unqualified_constructor_as_value() {
     assert_js!(
-        ("other", r#"pub type One { Two(a: Int, b: Int, c: Int) }"#),
+        ("other", r#"public type One { Two(a: Int, b: Int, c: Int) }"#),
         r#"import other.{Two}
 pub fn main() {
   Two
@@ -433,7 +433,7 @@ pub fn main() {
 #[test]
 fn const_imported_no_label() {
     assert_js!(
-        ("other", r#"pub type One { Two(Int) }"#),
+        ("other", r#"public type One { Two(Int) }"#),
         r#"import other
 pub const main = other.Two(1)
 "#,
@@ -443,7 +443,7 @@ pub const main = other.Two(1)
 #[test]
 fn const_imported_ignoring_label() {
     assert_js!(
-        ("other", r#"pub type One { Two(field: Int) }"#),
+        ("other", r#"public type One { Two(field: Int) }"#),
         r#"import other
 pub const main = other.Two(1)
 "#,
@@ -453,7 +453,7 @@ pub const main = other.Two(1)
 #[test]
 fn const_imported_using_label() {
     assert_js!(
-        ("other", r#"pub type One { Two(field: Int) }"#),
+        ("other", r#"public type One { Two(field: Int) }"#),
         r#"import other
 pub const main = other.Two(field: 1)
 "#,
@@ -463,7 +463,7 @@ pub const main = other.Two(field: 1)
 #[test]
 fn const_imported_multiple_fields() {
     assert_js!(
-        ("other", r#"pub type One { Two(a: Int, b: Int, c: Int) }"#),
+        ("other", r#"public type One { Two(a: Int, b: Int, c: Int) }"#),
         r#"import other
 pub const main = other.Two(b: 2, c: 3, a: 1)
 "#,
@@ -473,7 +473,7 @@ pub const main = other.Two(b: 2, c: 3, a: 1)
 #[test]
 fn const_unqualified_imported_no_label() {
     assert_js!(
-        ("other", r#"pub type One { Two(Int) }"#),
+        ("other", r#"public type One { Two(Int) }"#),
         r#"import other.{Two}
 pub const main = Two(1)
 "#,
@@ -483,7 +483,7 @@ pub const main = Two(1)
 #[test]
 fn const_unqualified_imported_ignoring_label() {
     assert_js!(
-        ("other", r#"pub type One { Two(field: Int) }"#),
+        ("other", r#"public type One { Two(field: Int) }"#),
         r#"import other.{Two}
 pub const main = Two(1)
 "#,
@@ -493,7 +493,7 @@ pub const main = Two(1)
 #[test]
 fn const_unqualified_imported_using_label() {
     assert_js!(
-        ("other", r#"pub type One { Two(field: Int) }"#),
+        ("other", r#"public type One { Two(field: Int) }"#),
         r#"import other.{Two}
 pub const main = Two(field: 1)
 "#,
@@ -503,7 +503,7 @@ pub const main = Two(field: 1)
 #[test]
 fn const_unqualified_imported_multiple_fields() {
     assert_js!(
-        ("other", r#"pub type One { Two(a: Int, b: Int, c: Int) }"#),
+        ("other", r#"public type One { Two(a: Int, b: Int, c: Int) }"#),
         r#"import other.{Two}
 pub const main = Two(b: 2, c: 3, a: 1)
 "#,
@@ -513,7 +513,7 @@ pub const main = Two(b: 2, c: 3, a: 1)
 #[test]
 fn imported_pattern() {
     assert_js!(
-        ("other", r#"pub type One { Two(a: Int, b: Int, c: Int) }"#),
+        ("other", r#"public type One { Two(a: Int, b: Int, c: Int) }"#),
         r#"import other.{Two}
 
 pub fn main(x) {
@@ -530,7 +530,7 @@ pub fn main(x) {
 #[test]
 fn keyword_label_name() {
     assert_js!(
-        r#"pub type Thing {
+        r#"public type Thing {
   Thing(in: Int, class: Nil)
 }
 "#,
@@ -540,7 +540,7 @@ fn keyword_label_name() {
 #[test]
 fn qualified() {
     assert_js!(
-        ("other", r#"pub type One { One }"#),
+        ("other", r#"public type One { One }"#),
         r#"import other
 
 pub fn main() {
@@ -553,7 +553,7 @@ pub fn main() {
 #[test]
 fn unapplied_record_constructors_typescript() {
     assert_ts_def!(
-        r#"pub type Cat { Cat(name: String) }
+        r#"public type Cat { Cat(name: String) }
 
 pub fn return_unapplied_cat() {
   Cat
@@ -565,7 +565,7 @@ pub fn return_unapplied_cat() {
 #[test]
 fn opaque_types_typescript() {
     assert_ts_def!(
-        r#"pub opaque type Animal {
+        r#"public opaque type Animal {
   Cat(goes_outside: Bool)
   Dog(plays_fetch: Bool)
 }
@@ -588,7 +588,7 @@ pub type One { One }
 #[test]
 fn new_type_import_syntax() {
     assert_js!(
-        ("package", "a", r#"pub type A { A }"#),
+        ("package", "a", r#"public type A { A }"#),
         r#"
 import a.{type A, A}
 
@@ -847,7 +847,7 @@ fn variant_defined_in_another_module_qualified_expression() {
     assert_js!(
         (
             "other_module",
-            r#"pub type Thingy { Variant OtherVariant }"#
+            r#"public type Thingy { Variant OtherVariant }"#
         ),
         r#"
 import other_module
@@ -862,7 +862,7 @@ pub fn check(x) -> Bool {
 #[test]
 fn variant_defined_in_another_module_unqualified_expression() {
     assert_js!(
-        ("other_module", r#"pub type Thingy { Variant Other(Int) }"#),
+        ("other_module", r#"public type Thingy { Variant Other(Int) }"#),
         r#"
 import other_module.{Variant}
 
@@ -876,7 +876,7 @@ pub fn check(x) -> Bool {
 #[test]
 fn variant_defined_in_another_module_aliased_expression() {
     assert_js!(
-        ("other_module", r#"pub type Thingy { Variant Other(Int) }"#),
+        ("other_module", r#"public type Thingy { Variant Other(Int) }"#),
         r#"
 import other_module.{Variant as Aliased}
 
@@ -890,7 +890,7 @@ pub fn check(x) -> Bool {
 #[test]
 fn variant_defined_in_another_module_qualified_clause_guard() {
     assert_js!(
-        ("other_module", r#"pub type Thingy { Variant Other(Int) }"#),
+        ("other_module", r#"public type Thingy { Variant Other(Int) }"#),
         r#"
 import other_module
 
@@ -907,7 +907,7 @@ pub fn process(e) -> String {
 #[test]
 fn variant_defined_in_another_module_unqualified_clause_guard() {
     assert_js!(
-        ("other_module", r#"pub type Thingy { Variant Other(Int) }"#),
+        ("other_module", r#"public type Thingy { Variant Other(Int) }"#),
         r#"
 import other_module.{Variant}
 
@@ -924,7 +924,7 @@ pub fn process(e) -> String {
 #[test]
 fn variant_defined_in_another_module_aliased_clause_guard() {
     assert_js!(
-        ("other_module", r#"pub type Thingy { Variant Other(Int) }"#),
+        ("other_module", r#"public type Thingy { Variant Other(Int) }"#),
         r#"
 import other_module.{Variant as Aliased}
 

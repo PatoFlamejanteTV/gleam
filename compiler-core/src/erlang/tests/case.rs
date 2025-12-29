@@ -51,7 +51,7 @@ pub fn main(x) {
 #[test]
 fn not() {
     assert_erl!(
-        r#"pub fn main(x, y) {
+        r#"public fn main(x, y) {
   case x {
     _ if !y -> 0
     _ -> 1
@@ -64,7 +64,7 @@ fn not() {
 #[test]
 fn not_two() {
     assert_erl!(
-        r#"pub fn main(x, y) {
+        r#"public fn main(x, y) {
   case x {
     _ if !y && !x -> 0
     _ -> 1

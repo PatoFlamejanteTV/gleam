@@ -94,7 +94,7 @@ fn multiple_line_custom_type_field_comments() {
 #[test]
 fn record_update_gets_formatted_like_a_function_call() {
     assert_format!(
-        r#"pub fn example() {
+        r#"public fn example() {
   Record(..record, field: {
     use _ <- list.map(record.field)
     io.print("Example")

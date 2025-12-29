@@ -1,9 +1,10 @@
 ---
 source: compiler-core/src/language_server/tests/action.rs
-expression: "pub fn main() {\n  case todo {\n    Ok(value) -> 2 * value + 1\n    Error(_) -> panic\n  }\n}"
+expression: "public fn main() {\n  case todo {\n    Ok(value) -> 2 * value + 1\n    Error(_) -> panic\n  }\n}"
+snapshot_kind: text
 ---
 ----- BEFORE ACTION
-pub fn main() {
+public fn main() {
   case todo {
     Ok(value) -> 2 * value + 1
                  ▔▔▔▔↑        
@@ -13,7 +14,7 @@ pub fn main() {
 
 
 ----- AFTER ACTION
-pub fn main() {
+public fn main() {
   case todo {
     Ok(value) -> {
       let int = 2 * value

@@ -3,7 +3,7 @@ use crate::assert_js;
 #[test]
 fn referencing_pattern_var() {
     assert_js!(
-        r#"pub fn main(xs) {
+        r#"public fn main(xs) {
   case xs {
     #(x) if x -> 1
     _ -> 0
@@ -16,7 +16,7 @@ fn referencing_pattern_var() {
 #[test]
 fn rebound_var() {
     assert_js!(
-        r#"pub fn main() {
+        r#"public fn main() {
   let x = False
   let x = True
   case x {
@@ -31,7 +31,7 @@ fn rebound_var() {
 #[test]
 fn bitarray_with_var() {
     assert_js!(
-        r#"pub fn main() {
+        r#"public fn main() {
   case 5 {
     z if <<z>> == <<z>> -> Nil
     _ -> Nil
@@ -68,7 +68,7 @@ pub fn main() {
 #[test]
 fn operator_wrapping_right() {
     assert_js!(
-        r#"pub fn main(xs, y: Bool, z: Bool) {
+        r#"public fn main(xs, y: Bool, z: Bool) {
   case xs {
     #(x) if x == { y == z } -> 1
     _ -> 0
@@ -81,7 +81,7 @@ fn operator_wrapping_right() {
 #[test]
 fn operator_wrapping_left() {
     assert_js!(
-        r#"pub fn main(xs, y: Bool, z: Bool) {
+        r#"public fn main(xs, y: Bool, z: Bool) {
   case xs {
     #(x) if { x == y } == z -> 1
     _ -> 0
@@ -94,7 +94,7 @@ fn operator_wrapping_left() {
 #[test]
 fn eq_scalar() {
     assert_js!(
-        r#"pub fn main(xs, y: Int) {
+        r#"public fn main(xs, y: Int) {
   case xs {
     #(x) if x == y -> 1
     _ -> 0
@@ -107,7 +107,7 @@ fn eq_scalar() {
 #[test]
 fn not_eq_scalar() {
     assert_js!(
-        r#"pub fn main(xs, y: Int) {
+        r#"public fn main(xs, y: Int) {
   case xs {
     #(x) if x != y -> 1
     _ -> 0
@@ -120,7 +120,7 @@ fn not_eq_scalar() {
 #[test]
 fn tuple_index() {
     assert_js!(
-        r#"pub fn main(x, xs: #(Bool, Bool, Bool)) {
+        r#"public fn main(x, xs: #(Bool, Bool, Bool)) {
   case x {
     _ if xs.2 -> 1
     _ -> 0
@@ -133,7 +133,7 @@ fn tuple_index() {
 #[test]
 fn not_eq_complex() {
     assert_js!(
-        r#"pub fn main(xs, y) {
+        r#"public fn main(xs, y) {
   case xs {
     #(x) if xs != y -> x
     _ -> 0
@@ -146,7 +146,7 @@ fn not_eq_complex() {
 #[test]
 fn eq_complex() {
     assert_js!(
-        r#"pub fn main(xs, y) {
+        r#"public fn main(xs, y) {
   case xs {
     #(x) if xs == y -> x
     _ -> 0
@@ -159,7 +159,7 @@ fn eq_complex() {
 #[test]
 fn constant() {
     assert_js!(
-        r#"pub fn main(xs) {
+        r#"public fn main(xs) {
   case xs {
     #(x) if x == 1 -> x
     _ -> 0
@@ -172,7 +172,7 @@ fn constant() {
 #[test]
 fn alternative_patterns() {
     assert_js!(
-        r#"pub fn main(xs) {
+        r#"public fn main(xs) {
   case xs {
     1 | 2 -> 0
     _ -> 1
@@ -185,7 +185,7 @@ fn alternative_patterns() {
 #[test]
 fn alternative_patterns_list() {
     assert_js!(
-        r#"pub fn main(xs) -> Int {
+        r#"public fn main(xs) -> Int {
   case xs {
     [1] | [1, 2] -> 0
     _ -> 1
@@ -198,7 +198,7 @@ fn alternative_patterns_list() {
 #[test]
 fn alternative_patterns_assignment() {
     assert_js!(
-        r#"pub fn main(xs) -> Int {
+        r#"public fn main(xs) -> Int {
   case xs {
     [x] | [_, x] -> x
     _ -> 1
@@ -211,7 +211,7 @@ fn alternative_patterns_assignment() {
 #[test]
 fn alternative_patterns_guard() {
     assert_js!(
-        r#"pub fn main(xs) -> Int {
+        r#"public fn main(xs) -> Int {
   case xs {
     [x] | [_, x] if x == 1 -> x
     _ -> 0
@@ -446,7 +446,7 @@ fn module_nested_access() {
 #[test]
 fn not() {
     assert_js!(
-        r#"pub fn main(x, y) {
+        r#"public fn main(x, y) {
   case x {
     _ if !y -> 0
     _ -> 1
@@ -459,7 +459,7 @@ fn not() {
 #[test]
 fn not_two() {
     assert_js!(
-        r#"pub fn main(x, y) {
+        r#"public fn main(x, y) {
   case x {
     _ if !y && !x -> 0
     _ -> 1
@@ -522,7 +522,7 @@ pub fn func(x) {
 #[test]
 fn constructor_function_in_guard() {
     assert_js!(
-        r#"pub fn func(x) {
+        r#"public fn func(x) {
     case [] {
         _ if [] == [ Ok ] -> True
         _ -> False
