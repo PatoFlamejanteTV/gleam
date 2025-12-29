@@ -1,4 +1,4 @@
 // There is another module with the same name in the `test` directory.
-pub fn main() {
+pub func main() {
   "Hello, Joe!"
 }

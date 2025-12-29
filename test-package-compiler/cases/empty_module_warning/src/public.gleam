@@ -1,3 +1,3 @@
-pub fn main() {
+pub func main() {
   "This module has public definitions"
 }

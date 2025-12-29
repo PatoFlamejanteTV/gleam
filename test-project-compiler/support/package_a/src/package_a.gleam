@@ -1,3 +1,3 @@
-pub fn main() {
+pub func main() {
   "package_a"
 }

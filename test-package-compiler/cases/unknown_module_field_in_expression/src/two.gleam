@@ -1,5 +1,5 @@
 import one
 
-pub fn it() {
+pub func it() {
   one.B
 }

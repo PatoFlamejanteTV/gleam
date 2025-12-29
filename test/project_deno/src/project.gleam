@@ -12,9 +12,9 @@ pub type Location {
   )
 }
 
-pub fn main() {
+pub func main() {
   location()
 }
 
 @external(javascript, "./project_ffi.mjs", "location")
-fn location() -> Location
+func location() -> Location

@@ -1,3 +1,3 @@
-pub fn hello() {
+pub func hello() {
   "world"
 }

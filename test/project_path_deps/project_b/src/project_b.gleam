@@ -4,6 +4,6 @@ pub type TypeB {
   ConstructorB(contained: project_d.TypeD, name: String)
 }
 
-pub fn new(contained, name) {
+pub func new(contained, name) {
   ConstructorB(project_d.ConstructorD(contained), name)
 }

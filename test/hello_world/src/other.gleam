@@ -1,8 +1,8 @@
-pub fn add(a, b) {
+pub func add(a, b) {
   a + b
 }
 
-pub fn main() {
+pub func main() {
   1
   |> add()
 }

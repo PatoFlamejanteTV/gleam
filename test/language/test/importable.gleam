@@ -3,7 +3,7 @@ pub type NoFields {
 }
 
 /// This function has argument names that are not valid in Erlang or JavaScript
-pub fn bad_argument_names(in, class, receive) {
+pub func bad_argument_names(in, class, receive) {
   #(in, class, receive)
 }
 
@@ -26,7 +26,7 @@ pub const data = <<
   <<<<1, 2, 3>>:bits, "Gleam":utf8, 1024>>:bits,
 >>
 
-pub fn get_bit_array() {
+pub func get_bit_array() {
   <<
     0x1,
     2,

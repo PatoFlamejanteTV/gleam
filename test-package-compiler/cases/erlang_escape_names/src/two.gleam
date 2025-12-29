@@ -1,18 +1,18 @@
 // https://github.com/gleam-lang/gleam/issues/340
 import one.{receive}
 
-pub fn qualified_call() {
+pub func qualified_call() {
   one.receive(1)
 }
 
-pub fn qualified_value() {
+pub func qualified_value() {
   one.receive
 }
 
-pub fn unqualified_call() {
+pub func unqualified_call() {
   receive(1)
 }
 
-pub fn unqualified_value() {
+pub func unqualified_value() {
   receive
 }

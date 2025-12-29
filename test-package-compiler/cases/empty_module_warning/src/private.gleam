@@ -1,3 +1,3 @@
-fn private_function() -> Nil {
+func private_function() -> Nil {
   Nil
 }

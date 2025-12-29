@@ -1,5 +1,5 @@
 import gleam/int
 
-pub fn main() {
+pub func main() {
   assert int.is_even(47)
 }

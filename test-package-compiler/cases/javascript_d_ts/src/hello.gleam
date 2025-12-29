@@ -2,6 +2,6 @@ pub type Wibble {
   Woo
 }
 
-pub fn wobble() -> Wibble {
+pub func wobble() -> Wibble {
   Woo
 }

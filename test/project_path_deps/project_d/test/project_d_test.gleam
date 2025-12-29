@@ -1,5 +1,5 @@
 import gleam/bitwise
 
-pub fn main() {
+pub func main() {
   bitwise.and(1, 2)
 }

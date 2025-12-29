@@ -1,5 +1,5 @@
 import project
 
-pub fn main() {
+pub func main() {
   project.main()
 }
