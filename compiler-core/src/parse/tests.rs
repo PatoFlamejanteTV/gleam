@@ -902,6 +902,19 @@ fn reserved_echo() {
 }
 
 #[test]
+fn reserved_guard() {
+    assert_module_error!(r#"const guard = 1"#);
+}
+
+#[test]
+fn guard_token() {
+    assert_eq!(
+        make_tokenizer("guard").collect_vec(),
+        [Ok((0, Token::Guard, 5))]
+    );
+}
+
+#[test]
 fn capture_with_name() {
     assert_module_error!(
         r#"

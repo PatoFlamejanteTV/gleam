@@ -495,6 +495,7 @@ utf16_codepoint, utf32_codepoint, signed, unsigned, big, little, native, size, u
                     | Token::Echo
                     | Token::Else
                     | Token::Fn
+                    | Token::Guard
                     | Token::If
                     | Token::Implement
                     | Token::Import
